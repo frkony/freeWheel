@@ -5,6 +5,9 @@ import Home from '../screens/Home';
 import Friend from '../screens/Friend';
 import Darlings from '../screens/Darlings'
 import ArtıOnSekiz from '../screens/ArtıOnSekiz';
+import OneriArti from '../screens/OneriArti';
+import OneriFri from '../screens/OneriFri';
+import OneriDar from '../screens/OneriDar';
 
 
 const Stack = createNativeStackNavigator();
@@ -22,19 +25,38 @@ function Routers() {
                 <Stack.Screen name="Friend" component={Friend}
                     options={
                         {
-                            title: 'Friend',
+                            title: 'Arkadaş',
+                            headerTitleAlign: 'center',
+                        }} />
+                <Stack.Screen name="OneriFri" component={OneriFri}
+                    options={
+                        {
+                            title: 'Arkadaş Öneri Penceresi',
                             headerTitleAlign: 'center',
                         }} />
                 <Stack.Screen name="Darlings" component={Darlings}
                     options={
                         {
-                            title: 'Darlings',
+                            title: 'Sevgili',
                             headerTitleAlign: 'center',
                         }} />
+                <Stack.Screen name="OneriDar" component={OneriDar}
+                    options={
+                        {
+                            title: 'Sevgili Öneri Penceresi',
+                            headerTitleAlign: 'center',
+                        }} />
+
                 <Stack.Screen name="ArtıOnSekiz" component={ArtıOnSekiz}
                     options={
                         {
                             title: '+18',
+                            headerTitleAlign: 'center',
+                        }} />
+                <Stack.Screen name="OneriArti" component={OneriArti}
+                    options={
+                        {
+                            title: 'Cinsellik Öneri Penceresi',
                             headerTitleAlign: 'center',
                         }} />
             </Stack.Navigator>

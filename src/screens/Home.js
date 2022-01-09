@@ -14,7 +14,10 @@ import {
     Text,
 } from 'react-native-paper'
 
-function Home({ navigation }) {
+const  width  = Dimensions.get('window').width;
+const  height  = Dimensions.get('window').height;
+
+export default function Home({ navigation }) {
 
 
     return (
@@ -36,8 +39,8 @@ function Home({ navigation }) {
 const styleHome = StyleSheet.create({
     container: {
         flex: 1,
-        width: Dimensions.get('window').width,
-        height: Dimensions.get('window').height,
+        width:width,
+        height: height,
         justifyContent: 'center',
         alignItems: 'center',
 
@@ -53,4 +56,3 @@ const styleHome = StyleSheet.create({
         margin:10
     }
 })
-export default Home;

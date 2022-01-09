@@ -21,9 +21,10 @@ import {
     Provider
 } from 'react-native-paper'
 
-const { width, height } = Dimensions.get('window');
+const width = Dimensions.get('window').width;
+const height = Dimensions.get('window').height;
 
-export default function Friend({ route }) {
+export default function Friend({ route, navigation }) {
 
 
     var number = Math.floor(Math.random() * 360) + 2880
@@ -76,12 +77,12 @@ export default function Friend({ route }) {
         })
     }
 
-    const [possibility1, setPossibility1] = useState('')
-    const [possibility2, setPossibility2] = useState('')
-    const [possibility3, setPossibility3] = useState('')
-    const [possibility4, setPossibility4] = useState('')
-    const [possibility5, setPossibility5] = useState('')
-    const [possibility6, setPossibility6] = useState('')
+    const [possibility1, setPossibility1] = useState('Seçim Yazılmadı!')
+    const [possibility2, setPossibility2] = useState('Seçim Yazılmadı!')
+    const [possibility3, setPossibility3] = useState('Seçim Yazılmadı!')
+    const [possibility4, setPossibility4] = useState('Seçim Yazılmadı!')
+    const [possibility5, setPossibility5] = useState('Seçim Yazılmadı!')
+    const [possibility6, setPossibility6] = useState('Seçim Yazılmadı!')
 
     const [visible, setVisible] = useState(false);
     const showDialog = () => setVisible(true);
@@ -89,53 +90,60 @@ export default function Friend({ route }) {
 
     return (
         <SafeAreaView style={styleFriend.container}>
-            <ScrollView style={{ flex: 1 }}>
-                <ImageBackground source={require('../img/logo.png')} resizeMode='cover'
-                    style={styleFriend.container}>
-                    <View style={styleFriend.txtInputView}>
-                        <TextInput style={[styleFriend.txtInput, { backgroundColor: '#20b2aa' }]} mode='outlined' label={'ihtimal 1'}
-                            onChangeText={setPossibility1} placeholder='Bir ihtimal Giriniz.'
-                            maxLength={10} />
-                        <TextInput style={[styleFriend.txtInput, { backgroundColor: '#a52a2a' }]} mode='outlined' label={'ihtimal 2'}
-                            onChangeText={setPossibility2} placeholder='Bir ihtimal Giriniz.'
-                            maxLength={10} />
-                    </View>
-                    <View style={styleFriend.txtInputView}>
-                        <TextInput style={[styleFriend.txtInput, { backgroundColor: '#ffd700' }]} mode='outlined' label={'ihtimal 3'}
-                            onChangeText={setPossibility3} placeholder='Bir ihtimal Giriniz.'
-                            maxLength={10} />
-                        <TextInput style={[styleFriend.txtInput, { backgroundColor: '#32cd32' }]} mode='outlined' label={'ihtimal 4'}
-                            onChangeText={setPossibility4} placeholder='Bir ihtimal Giriniz.'
-                            maxLength={10} />
-                    </View>
-                    <View style={styleFriend.txtInputView}>
-                        <TextInput style={[styleFriend.txtInput, { backgroundColor: '#9370db' }]} mode='outlined' label={'ihtimal 5'}
-                            onChangeText={setPossibility5} placeholder='Bir ihtimal Giriniz.'
-                            maxLength={10} />
-                        <TextInput style={[styleFriend.txtInput, { backgroundColor: '#ff00ff' }]} mode='outlined' label={'ihtimal 6'}
-                            onChangeText={setPossibility6} placeholder='Bir ihtimal Giriniz.'
-                            maxLength={10} />
-                    </View>
 
-                    <Image style={styleFriend.wheelDecisionTriangle} source={require('../img/kararUcgeni.png')} />
-                    <Animated.Image style={styleFriend.wheelView, { transform: [{ rotate: rotateSpin }] }}
-                        source={require('../img/wheel.png')} />
+            <ImageBackground source={require('../img/logo.png')} resizeMode='cover'
+                style={styleFriend.container}>
+                <View style={styleFriend.txtInputView}>
+                    <TextInput style={[styleFriend.txtInput, { backgroundColor: '#20b2aa' }]} mode='outlined' label={'ihtimal 1'}
+                        onChangeText={setPossibility1} placeholder='Bir ihtimal Giriniz.'
+                        maxLength={10} />
+                    <TextInput style={[styleFriend.txtInput, { backgroundColor: '#a52a2a' }]} mode='outlined' label={'ihtimal 2'}
+                        onChangeText={setPossibility2} placeholder='Bir ihtimal Giriniz.'
+                        maxLength={10} />
+                </View>
+                <View style={styleFriend.txtInputView}>
+                    <TextInput style={[styleFriend.txtInput, { backgroundColor: '#ffd700' }]} mode='outlined' label={'ihtimal 3'}
+                        onChangeText={setPossibility3} placeholder='Bir ihtimal Giriniz.'
+                        maxLength={10} />
+                    <TextInput style={[styleFriend.txtInput, { backgroundColor: '#32cd32' }]} mode='outlined' label={'ihtimal 4'}
+                        onChangeText={setPossibility4} placeholder='Bir ihtimal Giriniz.'
+                        maxLength={10} />
+                </View>
+                <View style={styleFriend.txtInputView}>
+                    <TextInput style={[styleFriend.txtInput, { backgroundColor: '#9370db' }]} mode='outlined' label={'ihtimal 5'}
+                        onChangeText={setPossibility5} placeholder='Bir ihtimal Giriniz.'
+                        maxLength={10} />
+                    <TextInput style={[styleFriend.txtInput, { backgroundColor: '#ff00ff' }]} mode='outlined' label={'ihtimal 6'}
+                        onChangeText={setPossibility6} placeholder='Bir ihtimal Giriniz.'
+                        maxLength={10} />
+                </View>
 
-                    <TouchableOpacity onPress={() => startImageSpin()}
-                        style={styleFriend.tOpacity}>
-                        <Text> Karar Ver </Text>
-                    </TouchableOpacity>
-                </ImageBackground>
-                <Dialog visible={visible} onDismiss={hideDialog}>
-                            <Dialog.Title>Vakit Geldiii</Dialog.Title>
-                            <Dialog.Content>
-                                <Paragraph>{sonuc}</Paragraph>
-                            </Dialog.Content>
-                            <Dialog.Actions>
-                                <Button onPress={hideDialog}>Done</Button>
-                            </Dialog.Actions>
-                        </Dialog>
-            </ScrollView>
+                <Image style={styleFriend.wheelDecisionTriangle} source={require('../img/kararUcgeni.png')} />
+                <Animated.Image style={styleFriend.wheelView, { transform: [{ rotate: rotateSpin }] }}
+                    source={require('../img/wheel.png')} />
+
+                <Button onPress={() => startImageSpin()}
+                    style={styleFriend.btn}>
+                    Karar Ver
+                </Button>
+                <Button onPress={() => navigation.navigate('OneriFri')}
+                    style={styleFriend.btn}>
+                    Öneriler
+                </Button>
+            </ImageBackground>
+            <Provider>
+                <Portal>
+                    <Dialog visible={visible} onDismiss={hideDialog}>
+                        <Dialog.Title> Şansını Denedin Ve Senin İçin Karar Verdik.</Dialog.Title>
+                        <Dialog.Content>
+                            <Paragraph>Kadere göre yapılması gereken : {sonuc}</Paragraph>
+                        </Dialog.Content>
+                        <Dialog.Actions>
+                            <Button onPress={hideDialog}>Done</Button>
+                        </Dialog.Actions>
+                    </Dialog>
+                </Portal>
+            </Provider>
         </SafeAreaView>
     )
 }
@@ -163,15 +171,10 @@ const styleFriend = StyleSheet.create({
         height: 50,
         marginLeft: 5
     },
-    tOpacity: {
-        borderRadius: 15,
-        width: '25%',
-        height: 50,
-        justifyContent: 'center',
-        alignItems: 'center',
-        backgroundColor: 'mediumorchid',
-        fontSize: 12,
-        marginTop: 15
+    btn: {
+        backgroundColor: '#f5deb3',
+        marginTop: 30,
+        width: width / 2
     },
     wheelView: {
         borderWidth: 1,

@@ -20,6 +20,7 @@ import {
     Provider,
     Button,
 } from 'react-native-paper'
+import { white } from 'react-native-paper/lib/typescript/styles/colors';
 
 const width = Dimensions.get('window').width;
 const height = Dimensions.get('window').height;
@@ -92,26 +93,26 @@ export default function ArtıOnSekiz({ route, navigation }) {
         <SafeAreaView style={styleArtıOnSekiz.container}>
             <View style={styleArtıOnSekiz.content}>
                 <View style={styleArtıOnSekiz.txtInputView}>
-                    <TextInput style={[styleArtıOnSekiz.txtInput, { backgroundColor: '#20b2aa' }]} mode='outlined' label={'ihtimal 1'}
+                    <TextInput style={[styleArtıOnSekiz.txtInput, { backgroundColor: '#ff0000' }]} mode='outlined' label={'ihtimal 1'}
                         onChangeText={setPossibility1} placeholder='Bir ihtimal Giriniz.'
                         maxLength={15} />
-                    <TextInput style={[styleArtıOnSekiz.txtInput, { backgroundColor: '#a52a2a' }]} mode='outlined' label={'ihtimal 2'}
+                    <TextInput style={[styleArtıOnSekiz.txtInput, { backgroundColor: '#228b22' }]} mode='outlined' label={'ihtimal 2'}
                         onChangeText={setPossibility2} placeholder='Bir ihtimal Giriniz.'
                         maxLength={15} />
                 </View>
                 <View style={styleArtıOnSekiz.txtInputView}>
-                    <TextInput style={[styleArtıOnSekiz.txtInput, { backgroundColor: '#ffd700' }]} mode='outlined' label={'ihtimal 3'}
+                    <TextInput style={[styleArtıOnSekiz.txtInput, { backgroundColor: '#0000ff' }]} mode='outlined' label={'ihtimal 3'}
                         onChangeText={setPossibility3} placeholder='Bir ihtimal Giriniz.'
                         maxLength={15} />
-                    <TextInput style={[styleArtıOnSekiz.txtInput, { backgroundColor: '#32cd32' }]} mode='outlined' label={'ihtimal 4'}
+                    <TextInput style={[styleArtıOnSekiz.txtInput, { backgroundColor: '#ffd700' }]} mode='outlined' label={'ihtimal 4'}
                         onChangeText={setPossibility4} placeholder='Bir ihtimal Giriniz.'
                         maxLength={15} />
                 </View>
                 <View style={[styleArtıOnSekiz.txtInputView,{marginBottom:10}]}>
-                    <TextInput style={[styleArtıOnSekiz.txtInput, { backgroundColor: '#9370db' }]} mode='outlined' label={'ihtimal 5'}
+                    <TextInput style={[styleArtıOnSekiz.txtInput, { backgroundColor: '#4b0082' }]} mode='outlined' label={'ihtimal 5'}
                         onChangeText={setPossibility5} placeholder='Bir ihtimal Giriniz.'
                         maxLength={15} />
-                    <TextInput style={[styleArtıOnSekiz.txtInput, { backgroundColor: '#ff00ff' }]} mode='outlined' label={'ihtimal 6'}
+                    <TextInput style={[styleArtıOnSekiz.txtInput, { backgroundColor: '#2f4f4f' }]} mode='outlined' label={'ihtimal 6'}
                         onChangeText={setPossibility6} placeholder='Bir ihtimal Giriniz.'
                         maxLength={15} />
                 </View>
@@ -132,9 +133,9 @@ export default function ArtıOnSekiz({ route, navigation }) {
             <Provider>
                 <Portal>
                     <Dialog visible={visible} onDismiss={hideDialog}>
-                        <Dialog.Title> Şansını Denedin Ve Senin İçin Karar Verdik.</Dialog.Title>
+                        <Dialog.Title> Şansını Denedin.</Dialog.Title>
                         <Dialog.Content>
-                            <Paragraph>Kadere göre yapılması gereken : {sonuc}</Paragraph>
+                            <Paragraph>Kaderin: {sonuc}</Paragraph>
                         </Dialog.Content>
                         <Dialog.Actions>
                             <Button onPress={hideDialog}>Done</Button>

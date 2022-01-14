@@ -78,10 +78,8 @@ export default function OneriArti({ navigation }) {
 
     return (
         <SafeAreaView style={styleOneriArti.container}>
-
-            <ImageBackground source={require('../img/logo.png')} resizeMode='cover'
-                style={styleOneriArti.container}>
-                <Provider>
+            <Provider>
+                <View style={styleOneriArti.content}>
                     <View style={{ width: width, height: height / 2, justifyContent: 'center', alignItems: 'center' }}>
                         <Button mode='contained' onPress={() => { setCheckedKamasutra(kamasutra), showDialog() }}
                             style={styleOneriArti.btn}>
@@ -98,39 +96,40 @@ export default function OneriArti({ navigation }) {
                         <Button mode='contained' onPress={() => { setCheckedContent(OneriData[4].content), setCheckedTitle(OneriData[4].name), showDialog2() }}
                             style={styleOneriArti.btn}>
                             <Text>Oyun Gecesi</Text> </Button>
+                        <Text style={styleOneriArti.txt}> Uygulama Gelişim Aşamasındadır. Bir Çok Yeni Gelişmelerle Güncellenecektir.</Text>
                     </View>
-                    <Portal>
-                        <Dialog visible={visible} onDismiss={hideDialog}>
-                            <ScrollView>
-                                <Dialog.Title><Text>Kamasutra Pozisyonları</Text></Dialog.Title>
-                                <Dialog.Content>{checkedKamasutra.map((data) => {
-                                    return (
-                                        <View>
-                                            <Text> {data.name}</Text>
-                                            <Image key={data.key} source={data.img} resizeMode='cover'
-                                                style={styleOneriArti.dialogImg} />
-                                        </View>
-                                    )
-                                })}</Dialog.Content>
-                                <Dialog.Actions>
-                                    <Button onPress={hideDialog}>Done</Button>
-                                </Dialog.Actions>
-                            </ScrollView>
-                        </Dialog>
-                    </Portal>
-                    <Portal>
-                        <Dialog visible={visible2} onDismiss={hideDialog2}>
-                            <ScrollView>
-                                <Dialog.Title><Text>{checkedTitle}</Text></Dialog.Title>
-                                <Dialog.Content><Text>{checkedContent}</Text></Dialog.Content>
-                                <Dialog.Actions>
-                                    <Button onPress={hideDialog2}>Done</Button>
-                                </Dialog.Actions>
-                            </ScrollView>
-                        </Dialog>
-                    </Portal>
-                </Provider>
-            </ImageBackground>
+                </View>
+                <Portal>
+                    <Dialog visible={visible} onDismiss={hideDialog}>
+                        <ScrollView>
+                            <Dialog.Title><Text>Kamasutra Pozisyonları</Text></Dialog.Title>
+                            <Dialog.Content>{checkedKamasutra.map((data) => {
+                                return (
+                                    <View>
+                                        <Text> {data.name}</Text>
+                                        <Image key={data.key} source={data.img} resizeMode='cover'
+                                            style={styleOneriArti.dialogImg} />
+                                    </View>
+                                )
+                            })}</Dialog.Content>
+                            <Dialog.Actions>
+                                <Button onPress={hideDialog}>Done</Button>
+                            </Dialog.Actions>
+                        </ScrollView>
+                    </Dialog>
+                </Portal>
+                <Portal>
+                    <Dialog visible={visible2} onDismiss={hideDialog2}>
+                        <ScrollView>
+                            <Dialog.Title><Text>{checkedTitle}</Text></Dialog.Title>
+                            <Dialog.Content><Text>{checkedContent}</Text></Dialog.Content>
+                            <Dialog.Actions>
+                                <Button onPress={hideDialog2}>Done</Button>
+                            </Dialog.Actions>
+                        </ScrollView>
+                    </Dialog>
+                </Portal>
+            </Provider>
         </SafeAreaView>
 
     )
@@ -141,20 +140,26 @@ const styleOneriArti = StyleSheet.create({
         flex: 1,
         width: width,
         height: height,
+        justifyContent: 'flex-start',
+        alignItems: 'center',
+        backgroundColor: '#ffefd5',
+    },
+    content: {
+        flex: 1,
         justifyContent: 'center',
         alignItems: 'center',
-
     },
     txt: {
         fontSize: 18,
         fontStyle: 'normal',
         fontWeight: 'bold',
+        justifyContent:'center',
+        alignItems:'center'
 
     },
     btn: {
         backgroundColor: '#f5deb3',
         margin: 10,
-        justifyContent: 'flex-end'
     },
     dialogImg: {
         width: Dialog.width,

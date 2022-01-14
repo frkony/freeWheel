@@ -38,43 +38,40 @@ export default function OneriFri({ navigation }) {
 
     return (
         <SafeAreaView style={styleOneriFri.container}>
-            <ImageBackground source={require('../img/logo.png')} resizeMode='cover'
-                style={styleOneriFri.container}>
-                <Provider>
-                    <View style={styleOneriFri.btnView}>
-                        <Button mode='contained' onPress={() => { showDialog(), setCheckedContent(OneriData[0].content), setCheckedTitle(OneriData[0].name) }}
-                            style={styleOneriFri.btn}>
-                            <Text>Akşam Yemeği</Text> </Button>
-                        <Button mode='contained' onPress={() => { showDialog(), setCheckedContent(OneriData[1].content), setCheckedTitle(OneriData[1].name) }}
-                            style={styleOneriFri.btn}>
-                            <Text>Film</Text> </Button>
-                        <Button mode='contained' onPress={() => { showDialog(), setCheckedContent(OneriData[2].content), setCheckedTitle(OneriData[2].name) }}
-                            style={styleOneriFri.btn}>
-                            <Text>SehirTuru</Text> </Button>
-                        <Button mode='contained' onPress={() => { showDialog(), setCheckedContent(OneriData[3].content), setCheckedTitle(OneriData[3].name) }}
-                            style={styleOneriFri.btn}>
-                            <Text>Sohbet</Text> </Button>
-                        <Button mode='contained' onPress={() => { showDialog(), setCheckedContent(OneriData[4].content), setCheckedTitle(OneriData[4].name) }}
-                            style={styleOneriFri.btn}>
-                            <Text>Oyun Gecesi</Text> </Button>
-                    </View>
+            <Provider>
+                <View style={styleOneriFri.btnView}>
+                    <Button mode='contained' onPress={() => { showDialog(), setCheckedContent(OneriData[0].content), setCheckedTitle(OneriData[0].name) }}
+                        style={styleOneriFri.btn}>
+                        <Text>Akşam Yemeği</Text> </Button>
+                    <Button mode='contained' onPress={() => { showDialog(), setCheckedContent(OneriData[1].content), setCheckedTitle(OneriData[1].name) }}
+                        style={styleOneriFri.btn}>
+                        <Text>Film</Text> </Button>
+                    <Button mode='contained' onPress={() => { showDialog(), setCheckedContent(OneriData[2].content), setCheckedTitle(OneriData[2].name) }}
+                        style={styleOneriFri.btn}>
+                        <Text>SehirTuru</Text> </Button>
+                    <Button mode='contained' onPress={() => { showDialog(), setCheckedContent(OneriData[3].content), setCheckedTitle(OneriData[3].name) }}
+                        style={styleOneriFri.btn}>
+                        <Text>Sohbet</Text> </Button>
+                    <Button mode='contained' onPress={() => { showDialog(), setCheckedContent(OneriData[4].content), setCheckedTitle(OneriData[4].name) }}
+                        style={styleOneriFri.btn}>
+                        <Text>Oyun Gecesi</Text> </Button>
+                    <Text style={styleOneriFri.txt}> Uygulama Gelişim Aşamasındadır. Bir Çok Yeni Gelişmelerle Güncellenecektir.</Text>
+                </View>
 
-                    <Portal>
-                        <Dialog visible={visible} onDismiss={hideDialog}>
-                            <ScrollView>
-                                <Dialog.Title> {checkedTitle}</Dialog.Title>
-                                <Dialog.Content>
-                                    <Paragraph> {checkedContent}</Paragraph>
-                                </Dialog.Content>
-                                <Dialog.Actions>
-                                    <Button onPress={hideDialog}>Done</Button>
-                                </Dialog.Actions>
-                            </ScrollView>
-                        </Dialog>
-                    </Portal>
-                </Provider>
-            </ImageBackground>
-
+                <Portal>
+                    <Dialog visible={visible} onDismiss={hideDialog}>
+                        <ScrollView>
+                            <Dialog.Title> {checkedTitle}</Dialog.Title>
+                            <Dialog.Content>
+                                <Paragraph> {checkedContent}</Paragraph>
+                            </Dialog.Content>
+                            <Dialog.Actions>
+                                <Button onPress={hideDialog}>Done</Button>
+                            </Dialog.Actions>
+                        </ScrollView>
+                    </Dialog>
+                </Portal>
+            </Provider>
         </SafeAreaView>
 
     )
@@ -87,12 +84,14 @@ const styleOneriFri = StyleSheet.create({
         height: height,
         justifyContent: 'center',
         alignItems: 'center',
+        backgroundColor: '#ffefd5'
     },
     txt: {
         fontSize: 18,
         fontStyle: 'normal',
         fontWeight: 'bold',
-
+        justifyContent:'flex-end',
+        alignItems:'flex-end'
     },
     btnView: {
         width: width,

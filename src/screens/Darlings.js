@@ -46,28 +46,28 @@ export default function Darlings({ route, navigation }) {
         }).start(() => {
             console.log('Finished Random Deg', randomDeg - 2880)
             if (0 < randomDeg - 2880 && randomDeg - 2880 < 60) {
-                ToastAndroid.show('0-60', ToastAndroid.SHORT)
+               //ToastAndroid.show('0-60', ToastAndroid.SHORT)
                 showDialog()
                 setSonuc(possibility1)
             }
             else if (60 < randomDeg - 2880 && randomDeg - 2880 < 120) {
-                ToastAndroid.show('60-120', ToastAndroid.SHORT)
+                //ToastAndroid.show('60-120', ToastAndroid.SHORT)
                 showDialog()
                 setSonuc(possibility2)
             } else if (120 < randomDeg - 2880 && randomDeg - 2880 < 180) {
-                ToastAndroid.show('120-180', ToastAndroid.SHORT)
+                //ToastAndroid.show('120-180', ToastAndroid.SHORT)
                 showDialog()
                 setSonuc(possibility3)
             } else if (180 < randomDeg - 2880 && randomDeg - 2880 < 240) {
-                ToastAndroid.show('180-240', ToastAndroid.SHORT)
+                //ToastAndroid.show('180-240', ToastAndroid.SHORT)
                 showDialog()
                 setSonuc(possibility4)
             } else if (240 < randomDeg - 2880 && randomDeg - 2880 < 300) {
-                ToastAndroid.show('240-300', ToastAndroid.SHORT)
+                //ToastAndroid.show('240-300', ToastAndroid.SHORT)
                 showDialog()
                 setSonuc(possibility5)
             } else if (300 < randomDeg - 2880 && randomDeg - 2880 < 360) {
-                ToastAndroid.show('300-360', ToastAndroid.SHORT)
+                //ToastAndroid.show('300-360', ToastAndroid.SHORT)
                 showDialog()
                 setSonuc(possibility6)
             } else {
@@ -92,33 +92,33 @@ export default function Darlings({ route, navigation }) {
         <SafeAreaView style={styleDarlings.container}>
             <View style={styleDarlings.content}>
                 <View style={styleDarlings.txtInputView}>
-                    <TextInput style={[styleDarlings.txtInput, { backgroundColor: '#20b2aa' }]} mode='outlined' label={'ihtimal 1'}
+                    <TextInput style={[styleDarlings.txtInput, { backgroundColor: '#ff0000' }]} mode='outlined' label={'ihtimal 1'}
                         onChangeText={setPossibility1} placeholder='Bir ihtimal Giriniz.'
                         maxLength={15} />
-                    <TextInput style={[styleDarlings.txtInput, { backgroundColor: '#a52a2a' }]} mode='outlined' label={'ihtimal 2'}
+                    <TextInput style={[styleDarlings.txtInput, { backgroundColor: '#228b22' }]} mode='outlined' label={'ihtimal 2'}
                         onChangeText={setPossibility2} placeholder='Bir ihtimal Giriniz.'
                         maxLength={15} />
                 </View>
                 <View style={styleDarlings.txtInputView}>
-                    <TextInput style={[styleDarlings.txtInput, { backgroundColor: '#ffd700' }]} mode='outlined' label={'ihtimal 3'}
+                    <TextInput style={[styleDarlings.txtInput, { backgroundColor: '#0000ff' }]} mode='outlined' label={'ihtimal 3'}
                         onChangeText={setPossibility3} placeholder='Bir ihtimal Giriniz.'
                         maxLength={15} />
-                    <TextInput style={[styleDarlings.txtInput, { backgroundColor: '#32cd32' }]} mode='outlined' label={'ihtimal 4'}
+                    <TextInput style={[styleDarlings.txtInput, { backgroundColor: '#ffd700' }]} mode='outlined' label={'ihtimal 4'}
                         onChangeText={setPossibility4} placeholder='Bir ihtimal Giriniz.'
                         maxLength={15} />
                 </View>
-                <View style={[styleDarlings.txtInputView,{marginBottom:10}]}>
-                    <TextInput style={[styleDarlings.txtInput, { backgroundColor: '#9370db' }]} mode='outlined' label={'ihtimal 5'}
+                <View style={[styleDarlings.txtInputView, { marginBottom: 10 }]}>
+                    <TextInput style={[styleDarlings.txtInput, { backgroundColor: '#4b0082' }]} mode='outlined' label={'ihtimal 5'}
                         onChangeText={setPossibility5} placeholder='Bir ihtimal Giriniz.'
                         maxLength={15} />
-                    <TextInput style={[styleDarlings.txtInput, { backgroundColor: '#ff00ff' }]} mode='outlined' label={'ihtimal 6'}
+                    <TextInput style={[styleDarlings.txtInput, { backgroundColor: '#2f4f4f' }]} mode='outlined' label={'ihtimal 6'}
                         onChangeText={setPossibility6} placeholder='Bir ihtimal Giriniz.'
                         maxLength={15} />
                 </View>
 
                 <Image style={styleDarlings.wheelDecisionTriangle} source={require('../img/kararUcgeni.png')} />
                 <Animated.Image style={[styleDarlings.wheelView, { transform: [{ rotate: rotateSpin }] }]}
-                    source={require('../img/wheel.png')} resizeMode={'cover'}/>
+                    source={require('../img/wheel.png')} resizeMode={'cover'} />
 
                 <Button onPress={() => startImageSpin()}
                     style={styleDarlings.btn}>
@@ -162,13 +162,13 @@ const styleDarlings = StyleSheet.create({
     },
     txtInputView: {
         flexDirection: 'row',
-        justifyContent:'center',
+        justifyContent: 'center',
         width: width,
         height: height / 13,
     },
     txtInput: {
         width: width / 2.10,
-        marginLeft:5
+        marginLeft: 5
     },
     btn: {
         width: width / 2,

@@ -14,8 +14,8 @@ import {
     Text,
 } from 'react-native-paper'
 
-const  width  = Dimensions.get('window').width;
-const  height  = Dimensions.get('window').height;
+const width = Dimensions.get('window').width;
+const height = Dimensions.get('window').height;
 
 export default function Home({ navigation }) {
 
@@ -23,15 +23,15 @@ export default function Home({ navigation }) {
     return (
         <SafeAreaView style={styleHome.container}>
             <ImageBackground source={require('../img/logo.png')} resizeMode='cover'
-                style={styleHome.container}>
+                style={styleHome.logo}/>
                 <Text style={styleHome.txt} > Kategorini Seç..</Text>
                 <Button mode='contained' style={styleHome.btn}
-                    onPress={() => navigation.navigate('Friend',{title:'Friend'})}><Text> Arkadaş </Text> </Button>
+                    onPress={() => navigation.navigate('Friend', { title: 'Friend' })}><Text> Arkadaş </Text> </Button>
                 <Button mode='contained' style={styleHome.btn}
                     onPress={() => navigation.navigate('Darlings')}><Text> Sevgili </Text></Button>
                 <Button mode='contained' style={styleHome.btn}
                     onPress={() => navigation.navigate('ArtıOnSekiz')}><Text> + 18 </Text></Button>
-            </ImageBackground>
+            
         </SafeAreaView>
     )
 }
@@ -39,20 +39,24 @@ export default function Home({ navigation }) {
 const styleHome = StyleSheet.create({
     container: {
         flex: 1,
-        width:width,
+        width: width,
         height: height,
         justifyContent: 'center',
         alignItems: 'center',
+        backgroundColor:'#ffefd5'
+    },
+    logo: {
+        width: width,
+        height: height/2
+    },
+    txt: {
+        fontSize: 18,
+        fontStyle: 'normal',
+        fontWeight: 'bold',
 
     },
-    txt:{
-        fontSize:18,
-        fontStyle:'normal',
-        fontWeight:'bold',
-        
-    },
-    btn:{
-        backgroundColor:'#f5deb3',
-        margin:10
+    btn: {
+        backgroundColor: '#f5deb3',
+        margin: 10
     }
 })

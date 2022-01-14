@@ -27,7 +27,7 @@ const height = Dimensions.get('window').height;
 export default function Friend({ route, navigation }) {
 
 
-    var number = Math.floor(Math.random() * 360) + 2880
+    const number = Math.floor(Math.random() * 360) + 2880
     const [randomDeg, setRandomDeg] = useState(Math.floor(Math.random() * 360) + 2880)
     const [sonuc, setSonuc] = useState('')
     console.log('Random Deg: ', randomDeg)
@@ -90,37 +90,35 @@ export default function Friend({ route, navigation }) {
 
     return (
         <SafeAreaView style={styleFriend.container}>
-
-            <ImageBackground source={require('../img/logo.png')} resizeMode='cover'
-                style={styleFriend.container}>
+            <View style={styleFriend.content}>
                 <View style={styleFriend.txtInputView}>
                     <TextInput style={[styleFriend.txtInput, { backgroundColor: '#20b2aa' }]} mode='outlined' label={'ihtimal 1'}
                         onChangeText={setPossibility1} placeholder='Bir ihtimal Giriniz.'
-                        maxLength={10} />
+                        maxLength={15} />
                     <TextInput style={[styleFriend.txtInput, { backgroundColor: '#a52a2a' }]} mode='outlined' label={'ihtimal 2'}
                         onChangeText={setPossibility2} placeholder='Bir ihtimal Giriniz.'
-                        maxLength={10} />
+                        maxLength={15} />
                 </View>
                 <View style={styleFriend.txtInputView}>
                     <TextInput style={[styleFriend.txtInput, { backgroundColor: '#ffd700' }]} mode='outlined' label={'ihtimal 3'}
                         onChangeText={setPossibility3} placeholder='Bir ihtimal Giriniz.'
-                        maxLength={10} />
+                        maxLength={15} />
                     <TextInput style={[styleFriend.txtInput, { backgroundColor: '#32cd32' }]} mode='outlined' label={'ihtimal 4'}
                         onChangeText={setPossibility4} placeholder='Bir ihtimal Giriniz.'
-                        maxLength={10} />
+                        maxLength={15} />
                 </View>
-                <View style={styleFriend.txtInputView}>
+                <View style={[styleFriend.txtInputView,{marginBottom:10}]}>
                     <TextInput style={[styleFriend.txtInput, { backgroundColor: '#9370db' }]} mode='outlined' label={'ihtimal 5'}
                         onChangeText={setPossibility5} placeholder='Bir ihtimal Giriniz.'
-                        maxLength={10} />
+                        maxLength={15} />
                     <TextInput style={[styleFriend.txtInput, { backgroundColor: '#ff00ff' }]} mode='outlined' label={'ihtimal 6'}
                         onChangeText={setPossibility6} placeholder='Bir ihtimal Giriniz.'
-                        maxLength={10} />
+                        maxLength={15} />
                 </View>
 
                 <Image style={styleFriend.wheelDecisionTriangle} source={require('../img/kararUcgeni.png')} />
-                <Animated.Image style={styleFriend.wheelView, { transform: [{ rotate: rotateSpin }] }}
-                    source={require('../img/wheel.png')} />
+                <Animated.Image style={[ styleFriend.wheelView,{ transform: [{ rotate: rotateSpin }] }]}
+                    source={require('../img/wheel.png')} resizeMode='cover' />
 
                 <Button onPress={() => startImageSpin()}
                     style={styleFriend.btn}>
@@ -130,16 +128,16 @@ export default function Friend({ route, navigation }) {
                     style={styleFriend.btn}>
                     Öneriler
                 </Button>
-            </ImageBackground>
+            </View>
             <Provider>
                 <Portal>
                     <Dialog visible={visible} onDismiss={hideDialog}>
-                        <Dialog.Title> Şansını Denedin Ve Senin İçin Karar Verdik.</Dialog.Title>
+                        <Dialog.Title> Şansını Denedin.</Dialog.Title>
                         <Dialog.Content>
-                            <Paragraph>Kadere göre yapılması gereken : {sonuc}</Paragraph>
+                            <Paragraph>Kaderin: {sonuc}</Paragraph>
                         </Dialog.Content>
                         <Dialog.Actions>
-                            <Button onPress={hideDialog}>Done</Button>
+                            <Button onPress={hideDialog}>Çıkış</Button>
                         </Dialog.Actions>
                     </Dialog>
                 </Portal>
@@ -155,36 +153,32 @@ const styleFriend = StyleSheet.create({
         height: height,
         justifyContent: 'flex-start',
         alignItems: 'center',
-
+        backgroundColor:'#ffefd5'
+    },
+    content: {
+        justifyContent: 'flex-start',
+        alignItems: 'center',
+        marginTop: 50
     },
     txtInputView: {
-        width: width,
-        height: 300,
         flexDirection: 'row',
-        height: 60,
-        marginTop: 5,
-        marginBottom: 5,
+        justifyContent:'center',
+        width: width,
+        height: height / 13,
     },
     txtInput: {
         justifyContent: 'center',
-        width: width / 2,
-        height: 50,
-        marginLeft: 5
+        width: width / 2.10,
+        marginLeft:5
     },
     btn: {
+        width: width / 2,
         backgroundColor: '#f5deb3',
-        marginTop: 30,
-        width: width / 2
+        marginTop: 5,
     },
     wheelView: {
-        borderWidth: 1,
-        width: width,
-        height: height / 2,
-        justifyContent: 'center',
-        alignItems: 'center',
-        borderRadius: 512,
-        borderWidth: 2,
-        marginBottom: 15,
+        width: width ,
+        height: height/2,
     },
     wheelDecisionTriangle: {
         width: 25,

@@ -90,9 +90,7 @@ export default function Darlings({ route, navigation }) {
 
     return (
         <SafeAreaView style={styleDarlings.container}>
-
-            <ImageBackground source={require('../img/logo.png')} resizeMode='cover'
-                style={styleDarlings.container}>
+            <View style={styleDarlings.content}>
                 <View style={styleDarlings.txtInputView}>
                     <TextInput style={[styleDarlings.txtInput, { backgroundColor: '#20b2aa' }]} mode='outlined' label={'ihtimal 1'}
                         onChangeText={setPossibility1} placeholder='Bir ihtimal Giriniz.'
@@ -109,7 +107,7 @@ export default function Darlings({ route, navigation }) {
                         onChangeText={setPossibility4} placeholder='Bir ihtimal Giriniz.'
                         maxLength={15} />
                 </View>
-                <View style={styleDarlings.txtInputView}>
+                <View style={[styleDarlings.txtInputView,{marginBottom:10}]}>
                     <TextInput style={[styleDarlings.txtInput, { backgroundColor: '#9370db' }]} mode='outlined' label={'ihtimal 5'}
                         onChangeText={setPossibility5} placeholder='Bir ihtimal Giriniz.'
                         maxLength={15} />
@@ -119,8 +117,8 @@ export default function Darlings({ route, navigation }) {
                 </View>
 
                 <Image style={styleDarlings.wheelDecisionTriangle} source={require('../img/kararUcgeni.png')} />
-                <Animated.Image style={styleDarlings.wheelView, { transform: [{ rotate: rotateSpin }] }}
-                    source={require('../img/wheel.png')} />
+                <Animated.Image style={[styleDarlings.wheelView, { transform: [{ rotate: rotateSpin }] }]}
+                    source={require('../img/wheel.png')} resizeMode={'cover'}/>
 
                 <Button onPress={() => startImageSpin()}
                     style={styleDarlings.btn}>
@@ -130,13 +128,13 @@ export default function Darlings({ route, navigation }) {
                     style={styleDarlings.btn}>
                     Öneriler
                 </Button>
-            </ImageBackground>
+            </View>
             <Provider>
                 <Portal>
                     <Dialog visible={visible} onDismiss={hideDialog}>
-                        <Dialog.Title> Şansını Denedin Ve Senin İçin Karar Verdik.</Dialog.Title>
+                        <Dialog.Title> Şansını Denedin.</Dialog.Title>
                         <Dialog.Content>
-                            <Paragraph>Kadere göre yapılması gereken : {sonuc}</Paragraph>
+                            <Paragraph>Kaderin : {sonuc}</Paragraph>
                         </Dialog.Content>
                         <Dialog.Actions>
                             <Button onPress={hideDialog}>Done</Button>
@@ -155,35 +153,31 @@ const styleDarlings = StyleSheet.create({
         height: height,
         justifyContent: 'flex-start',
         alignItems: 'center',
+        backgroundColor: '#ffefd5'
+    },
+    content: {
+        justifyContent: 'flex-start',
+        alignItems: 'center',
+        marginTop: 50
     },
     txtInputView: {
-        width: width,
-        height: 300,
         flexDirection: 'row',
-        height: 60,
-        marginTop: 5,
-        marginBottom: 5,
+        justifyContent:'center',
+        width: width,
+        height: height / 13,
     },
     txtInput: {
-        justifyContent: 'center',
-        width: width / 2,
-        height: 50,
-        marginLeft: 5
+        width: width / 2.10,
+        marginLeft:5
     },
     btn: {
+        width: width / 2,
         backgroundColor: '#f5deb3',
-        marginTop: 30,
-        width: width / 2
+        marginTop: 5,
     },
     wheelView: {
-        borderWidth: 1,
         width: width,
         height: height / 2,
-        justifyContent: 'center',
-        alignItems: 'center',
-        borderRadius: 512,
-        borderWidth: 2,
-        marginBottom: 15,
     },
     wheelDecisionTriangle: {
         width: 25,

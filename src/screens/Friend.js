@@ -134,7 +134,7 @@ export default function Friend({ route, navigation }) {
                             <Paragraph>Kaderin: {sonuc}</Paragraph>
                         </Dialog.Content>
                         <Dialog.Actions>
-                            <Button onPress={hideDialog}>Çıkış</Button>
+                            <Button onPress={hideDialog}>Bitti</Button>
                         </Dialog.Actions>
                     </Dialog>
                 </Portal>

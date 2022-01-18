@@ -45,27 +45,27 @@ export default function OneriFri({ navigation }) {
     }
     console.log('keyIndex', keyIndex)
     const OneriSohbet = [
-        { name: 'Dedikodu', content: 'Dedikoduyu sever misiniz? biz tavsiye etmeyiz ancak şöyle sakince bir oturup insanları çekiştirebilirsiniz. Detayları unutmadığınız emin olun.' },
-        { name: 'Felsefe', content: 'İllaki bir yazar,olay veya savunulan konuyu tartışmanıza gerek yok. benimsediğiniz veya öyle olması gerektiğini düşündüğünüz bir konuyu ele alarak objektif olarak tartışabilirsiniz. Tabiki birbirinizi kırmadan.' },
+        { name: 'Dedikodu', content: 'Dedikoduyu sever misiniz? Biz tavsiye etmeyiz ancak şöyle sakince bir oturup insanları çekiştirebilirsiniz. Detayları unutmadığınızdan emin olun.' },
+        { name: 'Felsefe', content: 'İllaki bir yazar,olay veya savunulan konuyu tartışmanıza gerek yok. Benimsediğiniz veya öyle olması gerektiğini düşündüğünüz bir konuyu ele alarak objektif olarak tartışabilirsiniz. Tabiki birbirinizi kırmadan.' },
         { name: 'İlginç Bilgiler', content: 'Aklınızda olan ve arkadaşlarınıza yararı olacağını düşündüğünüz bilgiler mi var? O zaman arkadaşınızda gördüğünüz bir problem üzerine oturup konuşabilirsiniz.' },
-        { name: 'Sorgulamak', content: 'Din, Dil veya Irklar sizce nasıl ortaya çıktı? Hayatınızda insanların size neden herhangi bir davranışta olsa çok fazla konuyu sorgulayabilirsiniz belki birşeyleri anlamanıza yardımcı oluruz.' },
+        { name: 'Sorgulamak', content: 'Din, Dil veya Irklar sizce nasıl ortaya çıktı? Hayatınızda insanların, size neden o şekilde davrandığını veya çok fazla konuyu sorgulayabilirsiniz belki birşeyleri anlamanıza yardımcı oluruz.' },
         { name: 'Mitoloji', content: 'Diğer Irklardaki Efsanevi hikayeleri ilginizi çekiyor veya biliyor musunuz? Bu konuda arkadaşlarınızla sohbet edebilirsiniz.' },
-        { name: 'Film', content: 'Size ilginç gelen veya en sevdiğiniz popüler/popüler olmayan filmleri arkadaşlarınızla paylaşığ üzerinde sohbet edebilirsiniz.' },
+        { name: 'Film', content: 'Size ilginç gelen veya en sevdiğiniz popüler/popüler olmayan filmleri arkadaşlarınızla paylaşıp üzerinde sohbet edebilirsiniz.' },
     ]
     const OneriSehirTuru = [
         { name: 'Çevreniz', content: 'Etrafınızda hep aynı mekanlara mı gidiyorsunuz? Çevrenizde bulunan diğer mekanları deneyibilirsiniz.' },
-        { name: 'Şehir içi', content: 'Yaşadığınız şehiri gezdiniz mi? başka bir ilçe veya semti dolaşmaya başlayabilirsiniz.' },
-        { name: 'Şehir Dışı', content: 'Hadi ama üşengeçliği bırak ve yeni şehirlere yeni yüzlere açık ol. Diğer şehirlere ulaşım için Otobüs, Blabla uygulaması veya otostop seçeneklerini deneyebilirsiniz.' },
-        { name: 'Doğa', content: 'Bulunduğunuz şehirin Doğal güzelliklerini biliyor musunuz? Bilmiyorsanız internet elinizin altında girin güzellikleri bulun. Ve üşenmeden gezmeye başlayın.' },
+        { name: 'Şehir içi', content: 'Yaşadığınız şehri gezdiniz mi? başka bir ilçe veya semti dolaşmaya başlayabilirsiniz.' },
+        { name: 'Şehir Dışı', content: 'Hadi ama üşengeçliği bırakın ve yeni şehirlere yeni yüzlere açık olun. Diğer şehirlere ulaşım için Otobüs, Blabla uygulaması veya otostop seçeneklerini deneyebilirsiniz.' },
+        { name: 'Doğa', content: 'Bulunduğunuz şehrin doğal güzelliklerini biliyor musunuz? Bilmiyorsanız internet elinizin altında girin güzellikleri bulun. Ve üşenmeden gezmeye başlayın.' },
         { name: 'Tarih', content: 'Şehrinizde ki Tarihi mekanları ziyarete gittiniz mi? Bizce gitmelisiniz, ve sizden önce orada kimler gelip geçmiş, kimler sizinle aynı topraklara basmış öğrenebilirsiniz.' },
-        { name: 'Kefşet', content: 'şehir içi veya şehir dışında doğal güzellikler veya gitmediğiniz bir kafe hiç denemediğiniz bir yer tabiki bilmiyorsunuz ancak internetten rahatlıkla öğreniblir ve yola koyulabilirsiniz.' },
+        { name: 'Kefşet', content: 'Şehir içi veya şehir dışında doğal güzellikler veya gitmediğiniz bir kafe hiç denemediğiniz bir yer tabiki bilmiyorsunuz ancak internetten rahatlıkla öğrenibilir ve yola koyulabilirsiniz.' },
     ]
     const OneriGezinti = [
-        {name:'Cafe', content:'Hadi ama hergün aynı cafede mi oturuyorsunuz birazdaha ileride yeni cafe açıldı. Birazda orda takılın ortamı deneyimleyin.'},
+        {name:'Cafe', content:'Hadi ama hergün aynı cafede mi oturuyorsunuz? birazdaha ileride yeni cafe açıldı. Birazda orda takılın.'},
         {name:'Oyun Salonu', content:'Ne zamandır oynamadığın oyun salonundaki oyun nedir hadi biraz hasret giderin.'},
-        {name:'Mahallede Volta', content:'Otur otur nereye kadar biraz yürümek iyi gelecektir temiz hava ve gürültüden uzak mahallede biraz volta atma zamanı.'},
-        {name:'Kola Çekirdek', content:'Nasıl keyifliydi ama o zaman sohbet kolanı ve çekirdeğini al mahalle veya caddende bir köşe kap. Eski günlerdeki gibi.'},
-        {name:'Sen Daha İyi Biliyorsun', content:'Şehrin sana özel girmediğin bir mahallesi kaldımı.'},
+        {name:'Mahallede Volta', content:'Otur otur nereye kadar biraz yürümek iyi gelecektir. Temiz hava ve gürültüden uzak mahallede biraz volta atma zamanı.'},
+        {name:'Kola Çekirdek', content:'Nasıl keyifliydi ama o zaman sohbet. Kolanı ve çekirdeğini al mahalle veya caddende bir köşe kap.'},
+        {name:'Sen Daha İyi Biliyorsun', content:'Şehrin girmediğin bir mahallesi kaldımı.'},
         {name:'Üşenmekten Vazgeç', content:'Hadiiiiiiiii'},
     ]
     const OneriFilm = [

@@ -137,7 +137,7 @@ export default function Darlings({ route, navigation }) {
                             <Paragraph>Kaderin : {sonuc}</Paragraph>
                         </Dialog.Content>
                         <Dialog.Actions>
-                            <Button onPress={hideDialog}>Done</Button>
+                            <Button onPress={hideDialog}>Bitti</Button>
                         </Dialog.Actions>
                     </Dialog>
                 </Portal>

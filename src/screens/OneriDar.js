@@ -23,7 +23,7 @@ export default function OneriDar({ navigation }) {
 
     const [visible, setVisible] = useState(false);
     const showDialog = () => setVisible(true);
-    const hideDialog = () => setVisible(false);
+    const hideDialog = () => {setVisible(false),setKeyIndex(0)};
     const [keyIndex, setKeyIndex] = useState(0);
     const [checked, setChecked] = useState([{}])
     const nextDialog = () => {
@@ -41,20 +41,20 @@ export default function OneriDar({ navigation }) {
         }
     }
     const OneriAksamYemegi =[
-        {name:'Ev Hali', content:'Dolabınızda neler var? Hangi yemeğe sevgi katarsan zaten güzel olacaktır. Yemek olarak değil değer verdiğiniz insanın size yemek hazırlaması olarak bakarsanız zaten herakşam keyifli akşam yemeği yiyeceksinizdir.'},
-        {name:'Dışarda', content:'Dışarıda Baş başa yenilicek köşe başı pilavcıları veya seyyar köfte arabasında ki satıcıları deneyebilirsiniz inanın bir restorattan daha keyifli olabilir.'},
-        {name:'Restorant', content:'Tabii her insan bir değil restorantında farklı bir havası var. Ana yemeğin yanına bir kırmızı şarap değerlendirebilirsiniz.'},
+        {name:'Ev Hali', content:'Dolabınızda neler var? Hangi yemeğe sevgi katarsan zaten güzel olacaktır. Yemek olarak değil, değer verdiğiniz insanın size yemek hazırlaması olarak bakarsanız zaten her gün keyifli akşam yemeği yiyeceksinizdir.'},
+        {name:'Dışarda', content:'Dışarıda baş başa yenilecek köşe başı pilavcıları veya seyyar köfte arabasında ki satıcıları deneyebilirsiniz inanın bir restorattan daha keyifli olabilir.'},
+        {name:'Restorant', content:'Tabii her insan bir değil restorantında farklı bir havası var. Çevrenizde denemediğiniz hangi mekan var haydi oraya.'},
     ]
     const OneriFilm =[
-        {name:'Aşk', content:'1. Pride & Prejudice\n2.Eternal Sunshine of the Spotless Mind\n3. 50 First Dates\n 4.Le fabuleux destin d Amélie Poulain / Amelie\n 5. Before Sunrise - Gün Doğmadan'},
-        {name:'Dram', content:'1. Kazablanka\n 2. Hatırlanılacak Bir Anı\n 3. Boş Ev\n 4.Aşk\n 5. Saksı Olmanın Faydaları'},
-        {name:'Korku', content:'1. The Silence of The Lambs\n 2.The Conjuring\n 3.The House of the Devil\n 4.As Above, So Below\n 5.Cabin in the Woods'},
-        {name:'Bilim Kurgu', content:'1.Edward Scissorhands\n 2.Arrival\n 3.Never Let Me Go\n 4.Ex Machina\n 5.The Jacket'},
+        {name:'Aşk', content:'1. Pride & Prejudice\n2.Eternal Sunshine of the Spotless Mind\n3. 50 First Dates\n4.Le fabuleux destin d Amélie Poulain / Amelie\n5. Before Sunrise'},
+        {name:'Dram', content:'1. Kazablanka\n2. Hatırlanılacak Bir Anı\n3. Boş Ev\n4.Aşk\n5. Saksı Olmanın Faydaları'},
+        {name:'Korku', content:'1. The Silence of The Lambs\n2.The Conjuring\n3.The House of the Devil\n4.As Above, So Below\n5.Cabin in the Woods'},
+        {name:'Bilim Kurgu', content:'1.Edward Scissorhands\n2.Arrival\n3.Never Let Me Go\n4.Ex Machina\n5.The Jacket'},
     ]
     const OneriSohbet =[
-        {name:'Tanışıyor muyuz?', content:'Birbirinizi ne kadar tanıdığınızı düşünüyorsunuz. istemediğiniz veya kırmızı çizgim dediniğiniz özelliklerinizi biliyor musunuz? yaşayarak sorun çıkmasına gerek yok haydi konuşun şimdi.'},
+        {name:'Tanışıyor muyuz?', content:'Birbirinizi ne kadar tanıdığınızı düşünüyorsunuz. istemediğiniz veya kırmızı çizgim dediğiniz özelliklerinizi biliyor musunuz? Yaşayarak sorun çıkmasına gerek yok haydi konuşun şimdi.'},
         {name:'Hoş Sohbet', content:'Geçirdiğiniz zaman zarfında hatırladığınız tatlı zamanlarınız var mı? Tekrar anlatıp neden keyiflenmiyorsunuz?'},
-        {name:'Zıt Konular', content:'Birbirinize hangi konularda ters düşüyorsunuz? Objektif düşünerek ortada buluşabilcek misiniz?'},
+        {name:'Zıt Konular', content:'Birbirinize hangi konularda ters düşüyorsunuz? Objektif düşünerek ortada buluşabilecek misiniz?'},
         {name:'Hayal', content:'Şuandan sonrasında nasıl bir mekan, hayat veya olay örgüsünde olmak isterdiniz. Hayalin Ucu bucağı yoktur.'},
         {name:'Fanteziler', content:'En çok ne yapmak istiyorsunuz bu hayatta? Ve birlikte yapsaydınz ne kadar keyif alırdınız.'},
     ]

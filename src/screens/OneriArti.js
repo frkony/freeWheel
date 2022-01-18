@@ -4,8 +4,6 @@ import {
     StyleSheet,
     View,
     Dimensions,
-    Animated,
-    ImageBackground,
     Image,
     ToastAndroid,
     ScrollView
@@ -18,8 +16,6 @@ import {
     Provider,
     Text,
 } from 'react-native-paper'
-import styles from '../styles'
-
 
 const width = Dimensions.get('window').width;
 const height = Dimensions.get('window').height;
@@ -32,7 +28,7 @@ export default function OneriArti({ navigation }) {
     const [checked, setChecked] = useState([{}])
     const [checkedKamasutra, setCheckedKamasutra] = useState([])
     const showDialog = () => setVisible(true);
-    const hideDialog = () => setVisible(false);
+    const hideDialog = () => {setVisible(false),setKeyIndex(0)};
     const showDialog2 = () => setVisible2(true);
     const nextDialog = () => {
         if (keyIndex == checked.length-1) {
@@ -51,28 +47,28 @@ export default function OneriArti({ navigation }) {
     const hideDialog2 = () => setVisible2(false);
 
     const OneriZevk = [
-        { name: 'Dirty Talk', content: 'Çirkin konuşma olarak tükrçeleştirilen bu kalıp, sex esnasında partnerizin zevk aldığı argo kelimeler ile konuşma olayıdır. seviyorsa bir deneyin derim :)' },
-        { name: 'Soyunurken İzle', content: 'Sexi görselle desteklemek heyecanlı olacaktır. Partneriniz size temas ederken yavaş yavaş soyunmak onu dahada şehvetlendirebilir.' },
+        { name: 'Dirty Talk', content: 'Çirkin konuşma olarak türkçeleştirilen bu kalıp, sex esnasında partnerizin zevk aldığı argo kelimeler ile konuşma olayıdır. seviyorsa bir deneyin derim :)' },
+        { name: 'Soyunurken İzle', content: 'Sex i görselle desteklemek heyecanlı olacaktır. Partneriniz size temas ederken yavaş yavaş soyunmak onu daha da şehvetlendirebilir.' },
         { name: 'Birbirinizi Soyun', content: 'Az önce dediğimiz gibi ancak bu durumun karşılıklı olması ve kaçınılmaz temas sizi ateşlendirecektir.' },
-        { name: 'Sıradanlıktan Çık', content: 'Hep aynı yerde aynı pozisyonda sıkılmış olabilirsiniz. sürekli aynı ışık ve pozisyonlarda iseniz bu durumu değiştirebilirsiniz. tüm sex yatakta geçiyorsa kucağınızla salonda koltuğa taşıyabilirsiniz partnerinizi. veya salon koltuğunda ufak dokunuşlarla sevişmeye başlayıp, mutfak masasında sex e başlarken tüm eğlenceyi yatak odasına taşıyabilirsiniz.' },
-        { name: 'Sıradanlıktan Çık', content: 'Aynı pozisyonlar artık alışkanlık getirebilir. Kamasutra pozisyonlarını denediniz mi en popüler olanları sizin için derledik.' },
+        { name: 'Sıradanlıktan Çık', content: 'Hep aynı ortamdan aynı pozisyonda sıkılmış olabilirsiniz. sürekli aynı ışık ve pozisyonlarda iseniz bu durumu değiştirebilirsiniz. Tüm sex yatakta geçiyorsa kucağınızla salonda, koltuğa taşıyabilirsiniz partnerinizi. Veya salon koltuğunda ufak dokunuşlarla sevişmeye başlayıp, mutfak masasında sex e başlarken tüm eğlenceyi yatak odasına taşıyabilirsiniz.' },
+        { name: 'Sıradanlıktan Çık', content: 'Aynı pozisyonlar artık alışkanlık getirebilir. Kamasutra pozisyonlarını denediniz mi? en popüler olanları sizin için derledik.' },
         { name: 'Kamasutra Pozisyonları', content: 'Sex Pozisyonlarının tarihine bakıldığında çinliler tarafından ilk çıkan pozisyonlar diyebiliriz.' },
         { name: 'Ön Sevişme', content: 'Tadına varana kadar bitirmeyin. partnerinizin her noktasına değdiğinizden emin olun, olun ki gizli zevk noktalarını keşfedebilirsiniz.' },
     ]
     const OneriOyuncaklar = [
-        { name: 'Kelepçe', content: 'Peluş kelepçeler veya direk kelepçe seti fantezik bir dünyanız varsa bu standartı deneyebilirsiniz.' },
-        { name: 'Kıyafet', content: 'Partnerinizle iletişim en önemlisidir. Hayal ettiği arzuladığı bir kıyafet veya model olabilir. 2 li zevk arttırımı için bu fantezi kıyafetler denenebilir(Genel Örn: Hizmetçi kıyafeti veya fantezi Gecelikler)' },
-        { name: 'Vibratör', content: 'Vibratör veya dengine gelicek bir titreşimli alet. sex sırasında klitoriside uyarmak kadın partnerinizin zevkini katlayacaktır.' },
-        { name: 'Anal Plug', content: 'Vajina ile Anal arasında bulunan Perineum bölgesi (P Noktası) bulunması ve uyarılması en kolay noktadır çift taraflı uyarın için bu oyuncak sex inize zevk katabilir.' },
+        { name: 'Kelepçe', content: 'Peluş kelepçeler veya direkt kelepçe seti, fantezik bir dünyanız varsa bu standartı deneyebilirsiniz.' },
+        { name: 'Kıyafet', content: 'Partnerinizle iletişim en önemlisidir. Hayal ettiği arzuladığı bir kıyafet veya model olabilir. 2 li zevk arttırımı için bu fantezik kıyafetler denenebilir(Genel Örn: Hizmetçi kıyafeti veya fantezi Gecelikler)' },
+        { name: 'Vibratör', content: 'Vibratör veya dengine gelicek bir titreşimli alet. Sex sırasında klitoriside uyarmak kadın partnerinizin zevkini katlayacaktır.' },
+        { name: 'Anal Plug', content: 'Vajina ile Anal arasında bulunan Perineum bölgesi (P Noktası) bulunması ve uyarılması en kolay noktadır çift taraflı uyarı için bu oyuncak sex inize zevk katabilir.' },
     ]
     const OneriMuzik = [
-        { name: 'Whiskey Blues', content: 'Slow ve Tiz Tınıları ile ortama romantik ve sexi bir hava katıcaktır.' },
-        { name: 'Reggea', content: 'Bob marleyin başını çektiği bu müzik tarzı sakin ve keyifli bir sex tadınıza katkıda bulunacaktır.' },
-        { name: 'Psycho Techno', content: 'Bir uyarıcı aldıysanız veya almasanızda Psycho Techo tarzı enerjinizi yükseltip çok daha performanslı ve heyecanı olmanızı sağlayacaktır.' },
-        { name: 'Çift Olarak Sevdikleriniz', content: 'Ortak sevdiğiniz müziklerden açarak sex esnasında eşlik ederek daha eğlencel bir oortam oluşturabilirsiniz.' },
+        { name: 'Whiskey Blues', content: 'Slow ve Tiz Tınıları ile ortama romantik ve sexi bir hava katacaktır.' },
+        { name: 'Reggea', content: 'Bob marleyin başını çektiği bu müzik tarzı sakin ve keyifli bir, sex tadına katkıda bulunacaktır.' },
+        { name: 'Psycho Techno', content: 'Bir uyarıcı aldıysanız veya almasanızda. Psycho Techo tarzı, enerjinizi yükseltip çok daha performanslı ve heyecanlı olmanızı sağlayacaktır.' },
+        { name: 'Çift Olarak Sevdikleriniz', content: 'Ortak sevdiğiniz müziklerden açarak sex esnasında eşlik ederek daha eğlenceli bir ortam oluşturabilirsiniz.' },
     ]
     const OneriOyun = [
-        { name: 'Pişti Shot', content: 'Alkollü anda iseniz ve 52 li kart desteniz varsa karmaya başlayın. tamamen çıplak kalana kadar pişti yapmaya devam.' },
+        { name: 'Pişti Shot', content: 'Alkollü mekanda iseniz ve 52 li kart desteniz varsa karmaya başlayın. Tamamen çıplak kalana kadar pişti yapmaya devam.' },
         { name: 'Uygulamamız', content: 'Yaptığımız önerilerden birkaç seçenek alarak bunları uygulayabilirsiniz.' },
         { name: 'Rol Play', content: 'Fantezi amaçlı olarak 2 farklı meslek veya 2 farklı yaşam içerisinde olan farklı insanlarmış gibi davranarak doğaçlama bir seneryoda gerçek bir sex deneyimi yaşayabilirsiniz.' },
     ]

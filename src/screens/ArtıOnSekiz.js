@@ -119,7 +119,7 @@ export default function ArtıOnSekiz({ route, navigation }) {
 
                 <Image style={styleArtıOnSekiz.wheelDecisionTriangle} source={require('../img/kararUcgeni.png')} />
                 <Animated.Image style={[styleArtıOnSekiz.wheelView, { transform: [{ rotate: rotateSpin }] }]}
-                    source={require('../img/wheel.png')} />
+                    source={require('../img/wheel.png')} resizeMode='cover' />
 
                 <Button onPress={() => startImageSpin()}
                     style={styleArtıOnSekiz.btn}>

@@ -4,7 +4,8 @@ import {
     StyleSheet,
     View,
     Dimensions,
-    ScrollView
+    ScrollView,
+    ToastAndroid
 } from 'react-native';
 import {
     Button,
@@ -23,48 +24,70 @@ export default function OneriDar({ navigation }) {
     const [visible, setVisible] = useState(false);
     const showDialog = () => setVisible(true);
     const hideDialog = () => setVisible(false);
-
-    const OneriData = [
-        { key: 1, name: "Akşam Yemeği", content: "Akşam Yemeği" },
-        { key: 2, name: "Film", content: "Film" },
-        { key: 3, name: "SehirTuru", content: "Şehir Turu" },
-        { key: 4, name: "Sohbet", content: "Sohbet" },
-        { key: 5, name: "OyunGecesi", content: "Oyun Gecesi" },
+    const [keyIndex, setKeyIndex] = useState(0);
+    const [checked, setChecked] = useState([{}])
+    const nextDialog = () => {
+        if (keyIndex == checked.length-1) {
+            ToastAndroid.show('Son Öneri', ToastAndroid.SHORT)
+        } else {
+            setKeyIndex(keyIndex + 1)
+        }
+    }
+    const backDialog = () => {
+        if (keyIndex == 0) {
+            ToastAndroid.show('İlk Öneri', ToastAndroid.SHORT)
+        } else {
+            setKeyIndex(keyIndex - 1)
+        }
+    }
+    const OneriAksamYemegi =[
+        {name:'Ev Hali', content:'Dolabınızda neler var? Hangi yemeğe sevgi katarsan zaten güzel olacaktır. Yemek olarak değil değer verdiğiniz insanın size yemek hazırlaması olarak bakarsanız zaten herakşam keyifli akşam yemeği yiyeceksinizdir.'},
+        {name:'Dışarda', content:'Dışarıda Baş başa yenilicek köşe başı pilavcıları veya seyyar köfte arabasında ki satıcıları deneyebilirsiniz inanın bir restorattan daha keyifli olabilir.'},
+        {name:'Restorant', content:'Tabii her insan bir değil restorantında farklı bir havası var. Ana yemeğin yanına bir kırmızı şarap değerlendirebilirsiniz.'},
     ]
-    const [checkedTitle, setCheckedTitle] = useState('');
-    const [checkedContent, setCheckedContent] = useState('')
+    const OneriFilm =[
+        {name:'Aşk', content:'1. Pride & Prejudice\n2.Eternal Sunshine of the Spotless Mind\n3. 50 First Dates\n 4.Le fabuleux destin d Amélie Poulain / Amelie\n 5. Before Sunrise - Gün Doğmadan'},
+        {name:'Dram', content:'1. Kazablanka\n 2. Hatırlanılacak Bir Anı\n 3. Boş Ev\n 4.Aşk\n 5. Saksı Olmanın Faydaları'},
+        {name:'Korku', content:'1. The Silence of The Lambs\n 2.The Conjuring\n 3.The House of the Devil\n 4.As Above, So Below\n 5.Cabin in the Woods'},
+        {name:'Bilim Kurgu', content:'1.Edward Scissorhands\n 2.Arrival\n 3.Never Let Me Go\n 4.Ex Machina\n 5.The Jacket'},
+    ]
+    const OneriSohbet =[
+        {name:'Tanışıyor muyuz?', content:'Birbirinizi ne kadar tanıdığınızı düşünüyorsunuz. istemediğiniz veya kırmızı çizgim dediniğiniz özelliklerinizi biliyor musunuz? yaşayarak sorun çıkmasına gerek yok haydi konuşun şimdi.'},
+        {name:'Hoş Sohbet', content:'Geçirdiğiniz zaman zarfında hatırladığınız tatlı zamanlarınız var mı? Tekrar anlatıp neden keyiflenmiyorsunuz?'},
+        {name:'Zıt Konular', content:'Birbirinize hangi konularda ters düşüyorsunuz? Objektif düşünerek ortada buluşabilcek misiniz?'},
+        {name:'Hayal', content:'Şuandan sonrasında nasıl bir mekan, hayat veya olay örgüsünde olmak isterdiniz. Hayalin Ucu bucağı yoktur.'},
+        {name:'Fanteziler', content:'En çok ne yapmak istiyorsunuz bu hayatta? Ve birlikte yapsaydınz ne kadar keyif alırdınız.'},
+    ]
+
 
     return (
         <SafeAreaView style={styleOneriDar.container}>
             <Provider>
                 <View style={styleOneriDar.content}>
-                    <Button mode='contained' onPress={() => { showDialog(), setCheckedContent(OneriData[0].content), setCheckedTitle(OneriData[0].name) }}
+                    <Button mode='contained' onPress={() => { showDialog(), setChecked(OneriAksamYemegi) }}
                         style={styleOneriDar.btn}>
                         <Text>Akşam Yemeği</Text> </Button>
-                    <Button mode='contained' onPress={() => { showDialog(), setCheckedContent(OneriData[1].content), setCheckedTitle(OneriData[1].name) }}
+                    <Button mode='contained' onPress={() => { showDialog(), setChecked(OneriFilm) }}
                         style={styleOneriDar.btn}>
-                        <Text>Film Gecesi</Text> </Button>
-                    <Button mode='contained' onPress={() => { showDialog(), setCheckedContent(OneriData[2].content), setCheckedTitle(OneriData[2].name) }}
-                        style={styleOneriDar.btn}>
-                        <Text>Şehir Turu</Text> </Button>
-                    <Button mode='contained' onPress={() => { showDialog(), setCheckedContent(OneriData[3].content), setCheckedTitle(OneriData[3].name) }}
+                        <Text>Film Turu</Text> </Button>
+                    <Button mode='contained' onPress={() => { showDialog(), setChecked(OneriSohbet) }}
                         style={styleOneriDar.btn}>
                         <Text>Sohbet</Text> </Button>
-                    <Button mode='contained' onPress={() => { showDialog(), setCheckedContent(OneriData[4].content), setCheckedTitle(OneriData[4].name) }}
-                        style={styleOneriDar.btn}>
-                        <Text>Oyun Gecesi</Text> </Button>
+                    
                     <Text style={styleOneriDar.txt}> Uygulama Gelişim Aşamasındadır. Bir Çok Yeni Gelişmelerle Güncellenecektir.</Text>
                 </View>
 
                 <Portal>
-                    <Dialog visible={visible} onDismiss={hideDialog}>
+                    <Dialog visible={visible} onDismiss={hideDialog} style={styleOneriDar.dialog}>
                         <ScrollView>
-                            <Dialog.Title> {checkedTitle}</Dialog.Title>
+                            <Dialog.Title> {checked[keyIndex].name}</Dialog.Title>
                             <Dialog.Content>
-                                <Paragraph>{checkedContent}</Paragraph>
+                                <Paragraph>{checked[keyIndex].content}</Paragraph>
                             </Dialog.Content>
-                            <Dialog.Actions>
-                                <Button onPress={hideDialog}>Done</Button>
+                            <Dialog.Actions style={styleOneriDar.dialogAction}>
+                                <Button onPress={backDialog}>Önceki</Button>
+                                <Button onPress={hideDialog}>Bitti</Button>
+                                <Button onPress={nextDialog}>Sonraki</Button>
                             </Dialog.Actions>
                         </ScrollView>
                     </Dialog>
@@ -93,11 +116,17 @@ const styleOneriDar = StyleSheet.create({
         fontSize: 18,
         fontStyle: 'normal',
         fontWeight: 'bold',
-        justifyContent:'center',
-        alignItems:'center'
+        justifyContent: 'center',
+        alignItems: 'center'
     },
     btn: {
         backgroundColor: '#f5deb3',
         margin: 10,
-    }
+    },
+    dialogAction:{
+        justifyContent:'space-between'
+    },
+    dialog: {
+        backgroundColor: '#ffefd5'
+    },
 })

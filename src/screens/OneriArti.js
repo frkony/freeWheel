@@ -28,21 +28,56 @@ export default function OneriArti({ navigation }) {
 
     const [visible, setVisible] = useState(false);
     const [visible2, setVisible2] = useState(false);
+    const [keyIndex, setKeyIndex] = useState(0)
+    const [checked, setChecked] = useState([{}])
+    const [checkedKamasutra, setCheckedKamasutra] = useState([])
     const showDialog = () => setVisible(true);
-    const showDialog2 = () => setVisible2(true);
     const hideDialog = () => setVisible(false);
+    const showDialog2 = () => setVisible2(true);
+    const nextDialog = () => {
+        if (keyIndex == checked.length-1) {
+            ToastAndroid.show('Son Öneri', ToastAndroid.SHORT)
+        } else {
+            setKeyIndex(keyIndex + 1)
+        }
+    }
+    const backDialog = () => {
+        if (keyIndex == 0) {
+            ToastAndroid.show('İlk Öneri', ToastAndroid.SHORT)
+        } else {
+            setKeyIndex(keyIndex - 1)
+        }
+    }
     const hideDialog2 = () => setVisible2(false);
 
-    const OneriData = [
-        { key: 1, name: 'Kamasutra Pozisyonları', content: ' ', img: '' },
-        { key: 2, name: 'Zevk Ortamları', content: ' ', img: '' },
-        { key: 3, name: 'Oyuncaklar', content: ' ', img: '' },
-        { key: 4, name: 'DinlenebilecekMüzikler', content: ' ', img: '' },
-        { key: 5, name: 'OyunGecesi', content: ' ', img: '' },
+    const OneriZevk = [
+        { name: 'Dirty Talk', content: 'Çirkin konuşma olarak tükrçeleştirilen bu kalıp, sex esnasında partnerizin zevk aldığı argo kelimeler ile konuşma olayıdır. seviyorsa bir deneyin derim :)' },
+        { name: 'Soyunurken İzle', content: 'Sexi görselle desteklemek heyecanlı olacaktır. Partneriniz size temas ederken yavaş yavaş soyunmak onu dahada şehvetlendirebilir.' },
+        { name: 'Birbirinizi Soyun', content: 'Az önce dediğimiz gibi ancak bu durumun karşılıklı olması ve kaçınılmaz temas sizi ateşlendirecektir.' },
+        { name: 'Sıradanlıktan Çık', content: 'Hep aynı yerde aynı pozisyonda sıkılmış olabilirsiniz. sürekli aynı ışık ve pozisyonlarda iseniz bu durumu değiştirebilirsiniz. tüm sex yatakta geçiyorsa kucağınızla salonda koltuğa taşıyabilirsiniz partnerinizi. veya salon koltuğunda ufak dokunuşlarla sevişmeye başlayıp, mutfak masasında sex e başlarken tüm eğlenceyi yatak odasına taşıyabilirsiniz.' },
+        { name: 'Sıradanlıktan Çık', content: 'Aynı pozisyonlar artık alışkanlık getirebilir. Kamasutra pozisyonlarını denediniz mi en popüler olanları sizin için derledik.' },
+        { name: 'Kamasutra Pozisyonları', content: 'Sex Pozisyonlarının tarihine bakıldığında çinliler tarafından ilk çıkan pozisyonlar diyebiliriz.' },
+        { name: 'Ön Sevişme', content: 'Tadına varana kadar bitirmeyin. partnerinizin her noktasına değdiğinizden emin olun, olun ki gizli zevk noktalarını keşfedebilirsiniz.' },
     ]
-    const [checkedTitle, setCheckedTitle] = useState('');
-    const [checkedContent, setCheckedContent] = useState('')
-    const [checkedKamasutra, setCheckedKamasutra] = useState([])
+    const OneriOyuncaklar = [
+        { name: 'Kelepçe', content: 'Peluş kelepçeler veya direk kelepçe seti fantezik bir dünyanız varsa bu standartı deneyebilirsiniz.' },
+        { name: 'Kıyafet', content: 'Partnerinizle iletişim en önemlisidir. Hayal ettiği arzuladığı bir kıyafet veya model olabilir. 2 li zevk arttırımı için bu fantezi kıyafetler denenebilir(Genel Örn: Hizmetçi kıyafeti veya fantezi Gecelikler)' },
+        { name: 'Vibratör', content: 'Vibratör veya dengine gelicek bir titreşimli alet. sex sırasında klitoriside uyarmak kadın partnerinizin zevkini katlayacaktır.' },
+        { name: 'Anal Plug', content: 'Vajina ile Anal arasında bulunan Perineum bölgesi (P Noktası) bulunması ve uyarılması en kolay noktadır çift taraflı uyarın için bu oyuncak sex inize zevk katabilir.' },
+    ]
+    const OneriMuzik = [
+        { name: 'Whiskey Blues', content: 'Slow ve Tiz Tınıları ile ortama romantik ve sexi bir hava katıcaktır.' },
+        { name: 'Reggea', content: 'Bob marleyin başını çektiği bu müzik tarzı sakin ve keyifli bir sex tadınıza katkıda bulunacaktır.' },
+        { name: 'Psycho Techno', content: 'Bir uyarıcı aldıysanız veya almasanızda Psycho Techo tarzı enerjinizi yükseltip çok daha performanslı ve heyecanı olmanızı sağlayacaktır.' },
+        { name: 'Çift Olarak Sevdikleriniz', content: 'Ortak sevdiğiniz müziklerden açarak sex esnasında eşlik ederek daha eğlencel bir oortam oluşturabilirsiniz.' },
+    ]
+    const OneriOyun = [
+        { name: 'Pişti Shot', content: 'Alkollü anda iseniz ve 52 li kart desteniz varsa karmaya başlayın. tamamen çıplak kalana kadar pişti yapmaya devam.' },
+        { name: 'Uygulamamız', content: 'Yaptığımız önerilerden birkaç seçenek alarak bunları uygulayabilirsiniz.' },
+        { name: 'Rol Play', content: 'Fantezi amaçlı olarak 2 farklı meslek veya 2 farklı yaşam içerisinde olan farklı insanlarmış gibi davranarak doğaçlama bir seneryoda gerçek bir sex deneyimi yaşayabilirsiniz.' },
+    ]
+
+
 
     const kamasutra = [
         { key: 1, name: 'Erotik', content: '', img: require('../img/kamasutra/01-erotikv.jpg') },
@@ -84,23 +119,23 @@ export default function OneriArti({ navigation }) {
                         <Button mode='contained' onPress={() => { setCheckedKamasutra(kamasutra), showDialog() }}
                             style={styleOneriArti.btn}>
                             <Text>Kamasutra Pozisyonları</Text> </Button>
-                        <Button mode='contained' onPress={() => { setCheckedContent(OneriData[1].content), setCheckedTitle(OneriData[1].name), showDialog2() }}
+                        <Button mode='contained' onPress={() => { setChecked(OneriZevk), showDialog2() }}
                             style={styleOneriArti.btn}>
-                            <Text>Zevk Ortamları</Text> </Button>
-                        <Button mode='contained' onPress={() => { setCheckedContent(OneriData[2].content), setCheckedTitle(OneriData[2].name), showDialog2() }}
+                            <Text>Zevk</Text> </Button>
+                        <Button mode='contained' onPress={() => { setChecked(OneriOyuncaklar), showDialog2() }}
                             style={styleOneriArti.btn}>
                             <Text>Oyuncaklar</Text> </Button>
-                        <Button mode='contained' onPress={() => { setCheckedContent(OneriData[3].content), setCheckedTitle(OneriData[3].name), showDialog2() }}
+                        <Button mode='contained' onPress={() => { setChecked(OneriMuzik), showDialog2() }}
                             style={styleOneriArti.btn}>
                             <Text>Dinlenebilecek Müzikler</Text> </Button>
-                        <Button mode='contained' onPress={() => { setCheckedContent(OneriData[4].content), setCheckedTitle(OneriData[4].name), showDialog2() }}
+                        <Button mode='contained' onPress={() => { setChecked(OneriOyun), showDialog2() }}
                             style={styleOneriArti.btn}>
-                            <Text>Oyun Gecesi</Text> </Button>
+                            <Text>+18 Oyun</Text> </Button>
                         <Text style={styleOneriArti.txt}> Uygulama Gelişim Aşamasındadır. Bir Çok Yeni Gelişmelerle Güncellenecektir.</Text>
                     </View>
                 </View>
                 <Portal>
-                    <Dialog visible={visible} onDismiss={hideDialog}>
+                    <Dialog visible={visible} onDismiss={hideDialog} style={styleOneriArti.dialog}>
                         <ScrollView>
                             <Dialog.Title><Text>Kamasutra Pozisyonları</Text></Dialog.Title>
                             <Dialog.Content>{checkedKamasutra.map((data) => {
@@ -119,12 +154,16 @@ export default function OneriArti({ navigation }) {
                     </Dialog>
                 </Portal>
                 <Portal>
-                    <Dialog visible={visible2} onDismiss={hideDialog2}>
+                    <Dialog visible={visible2} onDismiss={hideDialog2} style={styleOneriArti.dialog}>
                         <ScrollView>
-                            <Dialog.Title><Text>{checkedTitle}</Text></Dialog.Title>
-                            <Dialog.Content><Text>{checkedContent}</Text></Dialog.Content>
-                            <Dialog.Actions>
-                                <Button onPress={hideDialog2}>Done</Button>
+                            <Dialog.Title>{checked[keyIndex].name}</Dialog.Title>
+                            <Dialog.Content>
+                                <Paragraph>{checked[keyIndex].content}</Paragraph>
+                            </Dialog.Content>
+                            <Dialog.Actions style={styleOneriArti.dialogAction}>
+                                <Button onPress={backDialog}>Önceki</Button>
+                                <Button onPress={hideDialog2}>Bitti</Button>
+                                <Button onPress={nextDialog}>Sonraki</Button>
                             </Dialog.Actions>
                         </ScrollView>
                     </Dialog>
@@ -153,8 +192,8 @@ const styleOneriArti = StyleSheet.create({
         fontSize: 18,
         fontStyle: 'normal',
         fontWeight: 'bold',
-        justifyContent:'center',
-        alignItems:'center'
+        justifyContent: 'center',
+        alignItems: 'center'
 
     },
     btn: {
@@ -165,5 +204,11 @@ const styleOneriArti = StyleSheet.create({
         width: Dialog.width,
         height: 300,
         marginTop: 5,
+    },
+    dialog: {
+        backgroundColor: '#ffefd5'
+    },
+    dialogAction:{
+        justifyContent:'space-between'
     }
 })

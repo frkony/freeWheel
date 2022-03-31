@@ -6,20 +6,28 @@ export default{
     LANGUAGE:'Dil',
     TRTURKISH:'TR-Türkçe',
     ENENGLISH:'EN-İngilizce',
-    SELECTCATEGORY:'Kategorini Seç',
-    FRIEND:'Arkadaş',
+    DRAWYOUROWNDESTINY:'Kaderini kendin çiz',
     DARLING:'Sevgili',
-    SEXUALITY:'Cinsellik',
 
     // Friend Screen
-    DECIDE:'Karar Ver',
     SUGGESTIONS:'Öneriler',
-    ONEOFTHEOPTIONS:'Seçeneklerden biri..',
+    
 
     // Possibility Menu Screen
+    DECIDE:'Karar Ver',
+    ONEOFTHEOPTIONS:'Seçeneklerden biri..',
     SELECTIONNOTWRITTEN:'Seçim Yazılmadı',
     YOUHADYOURSHOT:'Şansını Denedin',
     RESULT:'Sonuç',
     DONE:'Bitti',
     UNLUCKY:'Şanssızlık, Bir Karar Veremedin. Tekrar Dene',
+    ENTERANOPTION:'Bir seçenek giriniz.',
+    WHEELDESTINY:"Kader Çarkı",
+
+    // SUGGESTIONS Screen
+    MOVIE:'Film',
+    FOOD:'Yemek',
+    ACTIVITY:'Aktivite',
+    SEXUALITY:'Cinsellik',
+
 }

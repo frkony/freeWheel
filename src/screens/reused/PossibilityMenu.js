@@ -1,4 +1,4 @@
-import React, {useState} from 'react';
+import React, {useState, useEffect} from 'react';
 import {useTranslation} from 'react-i18next';
 import {
   View,
@@ -7,6 +7,7 @@ import {
   SafeAreaView,
   Image,
   Animated,
+  ToastAndroid
 } from 'react-native';
 import {
   TextInput,
@@ -15,21 +16,16 @@ import {
   Paragraph,
   Provider,
   Portal,
-  Text
+  Text,
 } from 'react-native-paper';
 
 const width = Dimensions.get('window').width;
 const height = Dimensions.get('window').height;
 
 export default function PossibilityMenu() {
-  const {t} = useTranslation();
+  useEffect(() => {}, []);
 
-  const [possibility1, setPossibility1] = useState(t('SELECTIONNOTWRITTEN'));
-  const [possibility2, setPossibility2] = useState(t('SELECTIONNOTWRITTEN'));
-  const [possibility3, setPossibility3] = useState(t('SELECTIONNOTWRITTEN'));
-  const [possibility4, setPossibility4] = useState(t('SELECTIONNOTWRITTEN'));
-  const [possibility5, setPossibility5] = useState(t('SELECTIONNOTWRITTEN'));
-  const [possibility6, setPossibility6] = useState(t('SELECTIONNOTWRITTEN'));
+  const {t} = useTranslation();
 
   const [visible, setVisible] = useState(false);
   const showDialog = () => setVisible(true);
@@ -41,6 +37,8 @@ export default function PossibilityMenu() {
   );
 
   const [sonuc, setSonuc] = useState('');
+  console.log('Random number:', number);
+  console.log('Random Deg:', randomDeg);
 
   var rotateValue = new Animated.Value(0);
   const rotateSpin = rotateValue.interpolate({
@@ -79,14 +77,19 @@ export default function PossibilityMenu() {
         showDialog();
         setSonuc(possibility6);
       } else {
-        ToastAndroid.show(
-          t('Şanssızlık, Bir Karar Veremedin. Tekrar Dene'),
-          ToastAndroid.SHORT,
-        );
+        ToastAndroid.show(t('UNLUCKY'), ToastAndroid.SHORT);
       }
+      console.log('fonksiyon bitti number setlendi');
       setRandomDeg(number);
     });
   };
+
+  const [possibility1, setPossibility1] = useState(t('SELECTIONNOTWRITTEN'));
+  const [possibility2, setPossibility2] = useState(t('SELECTIONNOTWRITTEN'));
+  const [possibility3, setPossibility3] = useState(t('SELECTIONNOTWRITTEN'));
+  const [possibility4, setPossibility4] = useState(t('SELECTIONNOTWRITTEN'));
+  const [possibility5, setPossibility5] = useState(t('SELECTIONNOTWRITTEN'));
+  const [possibility6, setPossibility6] = useState(t('SELECTIONNOTWRITTEN'));
 
   return (
     <SafeAreaView style={styles.container}>
@@ -95,52 +98,52 @@ export default function PossibilityMenu() {
           style={[styles.txtInput, {backgroundColor: '#ff0000'}]}
           mode="outlined"
           label={t('ONEOFTHEOPTIONS')}
-          onChangeText={setPossibility1}
-          placeholder="Bir ihtimal Giriniz."
+          onChangeText={txt => setPossibility1(txt)}
+          placeholder={t('ENTERANOPTION')}
           maxLength={15}
         />
         <TextInput
-          style={[styles.txtInput, {backgroundColor: '#228b22'}]}
+          style={[styles.txtInput, {backgroundColor: '#ff8c00'}]}
           mode="outlined"
           label={t('ONEOFTHEOPTIONS')}
           onChangeText={setPossibility2}
-          placeholder="Bir ihtimal Giriniz."
+          placeholder={t('ENTERANOPTION')}
           maxLength={15}
         />
       </View>
       <View style={styles.txtInputView}>
         <TextInput
-          style={[styles.txtInput, {backgroundColor: '#0000ff'}]}
+          style={[styles.txtInput, {backgroundColor: '#ffff00'}]}
           mode="outlined"
           label={t('ONEOFTHEOPTIONS')}
           onChangeText={setPossibility3}
-          placeholder="Bir ihtimal Giriniz."
+          placeholder={t('ENTERANOPTION')}
           maxLength={15}
         />
         <TextInput
-          style={[styles.txtInput, {backgroundColor: '#ffd700'}]}
+          style={[styles.txtInput, {backgroundColor: '#00ff00'}]}
           mode="outlined"
           label={t('ONEOFTHEOPTIONS')}
           onChangeText={setPossibility4}
-          placeholder="Bir ihtimal Giriniz."
+          placeholder={t('ENTERANOPTION')}
           maxLength={15}
         />
       </View>
       <View style={styles.txtInputView}>
         <TextInput
-          style={[styles.txtInput, {backgroundColor: '#4b0082'}]}
+          style={[styles.txtInput, {backgroundColor: '#00bfff'}]}
           mode="outlined"
           label={t('ONEOFTHEOPTIONS')}
           onChangeText={setPossibility5}
-          placeholder="Bir ihtimal Giriniz."
+          placeholder={t('ENTERANOPTION')}
           maxLength={15}
         />
         <TextInput
-          style={[styles.txtInput, {backgroundColor: '#2f4f4f'}]}
+          style={[styles.txtInput, {backgroundColor: '#800080'}]}
           mode="outlined"
           label={t('ONEOFTHEOPTIONS')}
           onChangeText={setPossibility6}
-          placeholder="Bir ihtimal Giriniz."
+          placeholder={t('ENTERANOPTION')}
           maxLength={15}
         />
       </View>
@@ -155,8 +158,11 @@ export default function PossibilityMenu() {
           resizeMode={'cover'}
         />
 
-        <Button onPress={() => startImageSpin()} style={styles.btn}>
-         <Text style={styles.txt}>{t('DECIDE')}</Text>
+        <Button
+          onPress={() => startImageSpin()}
+          mode="contained"
+          style={styles.btn}>
+          <Text style={styles.txt}>{t('DECIDE')}</Text>
         </Button>
       </View>
       <Provider>
@@ -164,7 +170,9 @@ export default function PossibilityMenu() {
           <Dialog visible={visible} onDismiss={hideDialog}>
             <Dialog.Title> {t('YOUHADYOURSHOT')}</Dialog.Title>
             <Dialog.Content>
-              <Paragraph>{t('RESULT')} : {sonuc}</Paragraph>
+              <Paragraph>
+                {t('RESULT')} : {sonuc}
+              </Paragraph>
             </Dialog.Content>
             <Dialog.Actions>
               <Button onPress={hideDialog}>{t('DONE')}</Button>
@@ -180,7 +188,6 @@ const styles = StyleSheet.create({
     flex: 1,
     justifyContent: 'flex-start',
     alignItems: 'center',
-    backgroundColor: '#ffefd5',
   },
   content: {
     justifyContent: 'flex-start',
@@ -196,11 +203,16 @@ const styles = StyleSheet.create({
   txtInput: {
     width: width / 2.1,
     marginLeft: 5,
+    borderRadius: 25,
   },
   btn: {
-    width: width / 2,
-    backgroundColor: '#f5deb3',
-    marginTop: 5,
+    width: width / 1.5,
+    backgroundColor: '#008080',
+    marginTop: 25,
+    marginBottom: 10,
+    shadowColor: 'black',
+    shadowRadius: 16,
+    elevation: 16,
   },
   wheelView: {
     width: width,
@@ -211,9 +223,8 @@ const styles = StyleSheet.create({
     height: 25,
   },
   txt: {
-    fontSize: 16,
-    fontStyle: 'italic',
-    fontWeight: '600',
-    color:'#000000'
+    fontSize: 18,
+    fontWeight: 'bold',
+    color: '#fffafa',
   },
 });

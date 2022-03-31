@@ -4,7 +4,7 @@ import {
   StyleSheet,
   View,
   Dimensions,
-  ImageBackground,
+  Image,
   TouchableOpacity,
 } from 'react-native';
 import {Button, Text} from 'react-native-paper';
@@ -15,7 +15,6 @@ const width = Dimensions.get('window').width;
 const height = Dimensions.get('window').height;
 
 export default function Home({navigation}) {
-
   const [visible, setVisible] = useState(false);
   const changeStateMenu = () => {
     if (visible == false) {
@@ -26,10 +25,9 @@ export default function Home({navigation}) {
   };
   const {t, i18n} = useTranslation();
   const Lmenu = () => {
-    
-    var changeLang=(lang)=>{
-        i18n.changeLanguage(lang)
-    }
+    var changeLang = lang => {
+      i18n.changeLanguage(lang);
+    };
     return (
       <View
         style={{
@@ -46,25 +44,29 @@ export default function Home({navigation}) {
             alignItems: 'flex-end',
             //borderWidth:1
           }}>
-          <TouchableOpacity onPress={()=> {changeLang('tr'),setVisible(false)}}>
-            <Text >{t('TRTURKISH')}</Text>
+          <TouchableOpacity
+            onPress={() => {
+              changeLang('tr'), setVisible(false);
+            }}>
+            <Text>{t('TRTURKISH')}</Text>
           </TouchableOpacity>
-          <TouchableOpacity onPress={()=> {changeLang('en'),setVisible(false)}}>
-            <Text >{t('ENENGLISH')}</Text>
+          <TouchableOpacity
+            onPress={() => {
+              changeLang('en'), setVisible(false);
+            }}>
+            <Text>{t('ENENGLISH')}</Text>
           </TouchableOpacity>
         </View>
       </View>
     );
   };
 
-  
-
   return (
-    <SafeAreaView style={styleHome.container}>
+    <SafeAreaView style={styles.container}>
       <TouchableOpacity
         onPress={() => changeStateMenu()}
-        style={styleHome.translate}>
-        <Text style={styleHome.txt}>{t('LANGUAGE')} </Text>
+        style={styles.translate}>
+        <Text style={{color: 'black'}}>{t('LANGUAGE')} </Text>
         <AntDesign
           name="down"
           size={15}
@@ -73,63 +75,65 @@ export default function Home({navigation}) {
         />
       </TouchableOpacity>
       {visible && <Lmenu />}
-      <View style={styleHome.content}>
-        <ImageBackground
+      <View style={styles.content}>
+        <Image
           source={require('../../img/logo.png')}
           resizeMode="cover"
-          style={styleHome.logo}
+          style={styles.logo}
         />
-        <Text style={styleHome.txt}>{t('SELECTCATEGORY')}</Text>
         <Button
           mode="contained"
-          style={styleHome.btn}
-          onPress={() => navigation.navigate('Friend', {title: 'Friend'})}>
-          <Text style={styleHome.txt}>{t('FRIEND')} </Text>
+          style={styles.btn}
+          onPress={() => navigation.navigate('Wheeldestiny')}>
+          <Text style={styles.txt}>{t('DRAWYOUROWNDESTINY')} </Text>
         </Button>
         <Button
           mode="contained"
-          style={styleHome.btn}
-          onPress={() => navigation.navigate('Darlings')}>
-          <Text style={styleHome.txt}> {t('DARLING')} </Text>
+          style={styles.btn}
+          onPress={() => navigation.navigate('Suggestions')}>
+          <Text style={styles.txt}> {t('SUGGESTIONS')} </Text>
         </Button>
-        <Button
-          mode="contained"
-          style={styleHome.btn}
-          onPress={() => navigation.navigate('ArtıOnSekiz')}>
-          <Text style={styleHome.txt}>{t('SEXUALITY')}</Text>
-        </Button>
+      </View>
+      <View style={styles.eof}>
+        <Image
+          source={require('../../img/eof1.png')}
+          style={styles.eof.ımg}
+        />
       </View>
     </SafeAreaView>
   );
 }
 
-const styleHome = StyleSheet.create({
+const styles = StyleSheet.create({
   container: {
     flex: 1,
     justifyContent: 'flex-start',
     alignItems: 'flex-start',
-    backgroundColor: '#ffefd5',
   },
   content: {
-    width: width,
-    height: height,
     justifyContent: 'flex-start',
     alignItems: 'center',
-    //borderWidth:1,borderColor:'red'
   },
   logo: {
     width: width,
     height: height / 2,
+    marginBottom:20
   },
   txt: {
-    fontSize: 16,
-    fontStyle: 'italic',
-    fontWeight: '600',
-    color:'#000000'
+    fontSize: 18,
+    fontWeight: 'bold',
+    color: '#fffafa',
+    fontFamily: 'sans-serif',
   },
   btn: {
-    backgroundColor: '#f5deb3',
-    margin: 10,
+    justifyContent:'center',
+    backgroundColor: '#008080',
+    marginTop: 20,
+    shadowColor:'black',
+    shadowOpacity:1,
+    shadowOffset:{width:0,height:10},
+    shadowRadius:16,
+    elevation:16,
   },
   translate: {
     width: width,
@@ -137,6 +141,15 @@ const styleHome = StyleSheet.create({
     flexDirection: 'row',
     marginRight: 30,
     marginTop: 30,
-    //borderWidth: 1,
+  },
+  eof: {
+    flex:1,
+    width:width,
+    justifyContent:'flex-end',
+    alignItems:'center',
+    ımg: {
+      width: width / 3,
+      height: height / 6,
+    },
   },
 });

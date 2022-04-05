@@ -9,7 +9,7 @@ const width = Dimensions.get('window').width;
 const height = Dimensions.get('window').height;
 
 const SexualityData=[
-  {id:1,name:'Zindan Adası'},
+  {id:1,name:'Sex Adası'},
   {id:2,name:'Zindan Adası'},
   {id:3,name:'Zindan Adası'},
   {id:4,name:'Zindan Adası'},
@@ -23,7 +23,7 @@ export default function Sexuality({navigation}) {
   return (
     <SafeAreaView style={styles.container}>
       <View style={styles.content}>
-        <PossibilityMenu />
+        <PossibilityMenu SexualityData={SexualityData} />
         <Button mode="contained" style={styles.btn} onPress={() => navigation.navigate('SexualitySug')}>
           <Text style={styles.txt}>{t('SUGGESTIONS')}</Text>
         </Button>

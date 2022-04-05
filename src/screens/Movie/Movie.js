@@ -8,8 +8,8 @@ import PossibilityMenu from '../reused/PossibilityMenu';
 const width = Dimensions.get('window').width;
 const height = Dimensions.get('window').height;
 
-const filmData=[
-  {id:1,name:'Zindan Adası'},
+const MovieData=[
+  {id:1,name:'Movie Adası'},
   {id:2,name:'Zindan Adası'},
   {id:3,name:'Zindan Adası'},
   {id:4,name:'Zindan Adası'},
@@ -23,7 +23,7 @@ export default function Movie({navigation}) {
   return (
     <SafeAreaView style={styles.container}>
       <View style={styles.content}>
-        <PossibilityMenu />
+        <PossibilityMenu MovieData={MovieData} />
         <Button mode="contained" style={styles.btn} onPress={() => navigation.navigate('MovieSug')}>
           <Text style={styles.txt}>{t('SUGGESTIONS')}</Text>
         </Button>

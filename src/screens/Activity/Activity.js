@@ -9,7 +9,7 @@ const width = Dimensions.get('window').width;
 const height = Dimensions.get('window').height;
 
 const ActivityData=[
-  {id:1,name:'Zindan Adası'},
+  {id:1,name:'Acrivit Adası'},
   {id:2,name:'Zindan Adası'},
   {id:3,name:'Zindan Adası'},
   {id:4,name:'Zindan Adası'},
@@ -23,7 +23,7 @@ export default function Activity({navigation}) {
   return (
     <SafeAreaView style={styles.container}>
       <View style={styles.content}>
-        <PossibilityMenu />
+        <PossibilityMenu ActivityData={ActivityData} />
         <Button mode="contained" style={styles.btn} onPress={() => navigation.navigate('ActivitySug')}>
           <Text style={styles.txt}>{t('SUGGESTIONS')}</Text>
         </Button>

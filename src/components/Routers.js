@@ -2,8 +2,8 @@ import React from 'react';
 import {NavigationContainer} from '@react-navigation/native';
 import {createNativeStackNavigator} from '@react-navigation/native-stack';
 import Home from '../screens/Home/Home';
-import {Dimensions, Image} from 'react-native';
 import {useTranslation} from 'react-i18next';
+// Screens
 import Wheeldestiny from '../screens/Wheeldestiny/Wheeldestiny';
 import Suggestions from '../screens/Suggestions/Suggestions';
 import Movie from '../screens/Movie/Movie';
@@ -16,8 +16,6 @@ import Sexuality from '../screens/Sexuality/Sexuality';
 import SexualitySug from '../screens/Sexuality/SexualitySug';
 
 const Stack = createNativeStackNavigator();
-const width = Dimensions.get('window').width;
-const height = Dimensions.get('window').height;
 
 function Routers() {
   const {t} = useTranslation();

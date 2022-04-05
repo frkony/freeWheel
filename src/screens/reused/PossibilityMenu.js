@@ -7,7 +7,7 @@ import {
   SafeAreaView,
   Image,
   Animated,
-  ToastAndroid
+  ToastAndroid,
 } from 'react-native';
 import {
   TextInput,
@@ -22,37 +22,55 @@ import {
 const width = Dimensions.get('window').width;
 const height = Dimensions.get('window').height;
 
-export default function PossibilityMenu() {
-  useEffect(() => {}, []);
-
+export default function PossibilityMenu({ActivityData,FoodData,MovieData,SexualityData}) {
+  //console.log('PossibilityMenu Başladı.');
+  useEffect(() => {
+    //console.log('useEffect Başladı');
+    generateNum();
+    suggestionsSet();
+  }, [randomDeg]);
+  
   const {t} = useTranslation();
-
   const [visible, setVisible] = useState(false);
+  const [randomDeg, setRandomDeg] = useState(0);
+  const [sonuc, setSonuc] = useState('');
   const showDialog = () => setVisible(true);
   const hideDialog = () => setVisible(false);
+  const ActivityD=ActivityData;
+  const FoodD=FoodData;
+  const MovieD=MovieData;
+  const SexualityD=SexualityData;
 
-  var number = Math.floor(Math.random() * 360) + 2880;
-  const [randomDeg, setRandomDeg] = useState(
-    Math.floor(Math.random() * 360) + 2880,
-  );
-
-  const [sonuc, setSonuc] = useState('');
-  console.log('Random number:', number);
-  console.log('Random Deg:', randomDeg);
-
+  const generateNum =()=> {
+    var number = Math.floor(Math.random() * 360) + 2880;
+    setRandomDeg(number);
+    //console.log('Random Deg Setlendi, Random Number:', number-2880);
+  }
+  //console.log('Random Deg:', randomDeg-2880);
+  
   var rotateValue = new Animated.Value(0);
   const rotateSpin = rotateValue.interpolate({
     inputRange: [0, 1],
     outputRange: ['0deg', randomDeg + 'deg'],
   });
-  const startImageSpin = () => {
-    Animated.timing(rotateValue, {
-      toValue: 1,
-      duration: 5000,
-      useNativeDriver: false,
-    }).start(() => {
-      console.log('Finished Random Deg', randomDeg - 2880);
-      if (0 < randomDeg - 2880 && randomDeg - 2880 < 60) {
+  
+
+  const startImageSpin =()=> {
+    //console.log('Start Image Spin Başladı')
+    Animated.timing(
+      rotateValue,
+      {
+        toValue: 1,
+        duration: 5000,
+        useNativeDriver: false,
+      }
+    ).start(({finished}) => {
+      //console.log('Finished Değeri :',finished)
+      //console.log('Spin Sonlandı Random Deg', randomDeg - 2880);
+      if(finished==false){
+        ToastAndroid.show('Oynama Uygulamayla',ToastAndroid.SHORT)
+      }
+      else if (0 < randomDeg - 2880 && randomDeg - 2880 < 60) {
         //ToastAndroid.show('0-60', ToastAndroid.SHORT)
         showDialog();
         setSonuc(possibility1);
@@ -79,18 +97,55 @@ export default function PossibilityMenu() {
       } else {
         ToastAndroid.show(t('UNLUCKY'), ToastAndroid.SHORT);
       }
-      console.log('fonksiyon bitti number setlendi');
-      setRandomDeg(number);
+      generateNum();
     });
-  };
+  }
 
-  const [possibility1, setPossibility1] = useState(t('SELECTIONNOTWRITTEN'));
-  const [possibility2, setPossibility2] = useState(t('SELECTIONNOTWRITTEN'));
-  const [possibility3, setPossibility3] = useState(t('SELECTIONNOTWRITTEN'));
-  const [possibility4, setPossibility4] = useState(t('SELECTIONNOTWRITTEN'));
-  const [possibility5, setPossibility5] = useState(t('SELECTIONNOTWRITTEN'));
-  const [possibility6, setPossibility6] = useState(t('SELECTIONNOTWRITTEN'));
+  const [possibility1, setPossibility1] = useState('');
+  const [possibility2, setPossibility2] = useState('');
+  const [possibility3, setPossibility3] = useState('');
+  const [possibility4, setPossibility4] = useState('');
+  const [possibility5, setPossibility5] = useState('');
+  const [possibility6, setPossibility6] = useState('');
 
+  function suggestionsSet(){
+    if(ActivityD){
+      setPossibility1(ActivityD[0].name)
+      setPossibility2(ActivityD[1].name)
+      setPossibility3(ActivityD[2].name)
+      setPossibility4(ActivityD[3].name)
+      setPossibility5(ActivityD[4].name)
+      setPossibility6(ActivityD[5].name)
+    }
+    else if(FoodD){
+      setPossibility1(FoodD[0].name)
+      setPossibility2(FoodD[1].name)
+      setPossibility3(FoodD[2].name)
+      setPossibility4(FoodD[3].name)
+      setPossibility5(FoodD[4].name)
+      setPossibility6(FoodD[5].name)
+    }
+    else if(MovieD){
+      setPossibility1(MovieD[0].name)
+      setPossibility2(MovieD[1].name)
+      setPossibility3(MovieD[2].name)
+      setPossibility4(MovieD[3].name)
+      setPossibility5(MovieD[4].name)
+      setPossibility6(MovieD[5].name)
+    }
+    else if(SexualityD){
+      setPossibility1(SexualityD[0].name)
+      setPossibility2(SexualityD[1].name)
+      setPossibility3(SexualityD[2].name)
+      setPossibility4(SexualityD[3].name)
+      setPossibility5(SexualityD[4].name)
+      setPossibility6(SexualityD[5].name)
+    }
+    else{
+      ToastAndroid.show('Öneri Yok',ToastAndroid.SHORT)
+    }
+  }
+  
   return (
     <SafeAreaView style={styles.container}>
       <View style={styles.txtInputView}>
@@ -100,6 +155,7 @@ export default function PossibilityMenu() {
           label={t('ONEOFTHEOPTIONS')}
           onChangeText={txt => setPossibility1(txt)}
           placeholder={t('ENTERANOPTION')}
+          value={possibility1}
           maxLength={15}
         />
         <TextInput
@@ -108,6 +164,7 @@ export default function PossibilityMenu() {
           label={t('ONEOFTHEOPTIONS')}
           onChangeText={setPossibility2}
           placeholder={t('ENTERANOPTION')}
+          value={possibility2}
           maxLength={15}
         />
       </View>
@@ -118,6 +175,7 @@ export default function PossibilityMenu() {
           label={t('ONEOFTHEOPTIONS')}
           onChangeText={setPossibility3}
           placeholder={t('ENTERANOPTION')}
+          value={possibility3}
           maxLength={15}
         />
         <TextInput
@@ -126,6 +184,7 @@ export default function PossibilityMenu() {
           label={t('ONEOFTHEOPTIONS')}
           onChangeText={setPossibility4}
           placeholder={t('ENTERANOPTION')}
+          value={possibility4}
           maxLength={15}
         />
       </View>
@@ -136,6 +195,7 @@ export default function PossibilityMenu() {
           label={t('ONEOFTHEOPTIONS')}
           onChangeText={setPossibility5}
           placeholder={t('ENTERANOPTION')}
+          value={possibility5}
           maxLength={15}
         />
         <TextInput
@@ -144,6 +204,7 @@ export default function PossibilityMenu() {
           label={t('ONEOFTHEOPTIONS')}
           onChangeText={setPossibility6}
           placeholder={t('ENTERANOPTION')}
+          value={possibility6}
           maxLength={15}
         />
       </View>
@@ -157,13 +218,16 @@ export default function PossibilityMenu() {
           source={require('../../img/wheel.png')}
           resizeMode={'cover'}
         />
-
+        
         <Button
-          onPress={() => startImageSpin()}
+          onPress={() => {
+            startImageSpin();
+          }}
           mode="contained"
           style={styles.btn}>
           <Text style={styles.txt}>{t('DECIDE')}</Text>
         </Button>
+        
       </View>
       <Provider>
         <Portal>

@@ -1,4 +1,3 @@
-import {t} from 'i18next';
 import React from 'react';
 import {useTranslation} from 'react-i18next';
 import {SafeAreaView, StyleSheet, View, Dimensions} from 'react-native';
